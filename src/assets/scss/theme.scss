@@ -1,0 +1,385 @@
+@use 'sass:color';
+
+@use './base/mixins';
+@use './base/sizing';
+
+@use './var/colors';
+@use './var/typography';
+@use './var/sizes';
+
+@use './comp/layout';
+@use './comp/buttons';
+@use './comp/nav';
+@use './comp/scrollbar';
+@use './comp/tables';
+@use './comp/cards';
+
+// ## General Settings
+html {
+  background-color: var(--dominant);
+  font-size: var(--font-m);
+  @extend .font-main;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: auto; /* default */
+}
+body {
+}
+section {
+  scroll-snap-align: start !important;
+}
+a svg {
+  width: 64px !important;
+}
+small {
+  @extend .font-header;
+}
+hr {
+  height: 1rem;
+  border: none;
+  opacity: 0;
+}
+p,
+span,
+strong {
+  color: var(--text);
+}
+label {
+  color: var(--highlight);
+}
+
+// ### Background Underlay for the App
+.app-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120dvh; // to fill the screen
+  z-index: 0; // Ensure it stays on bottom
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dominant);
+  transition: background-color 0.2s ease-in;
+}
+
+// > App
+#app {
+  min-width: 100%;
+  width: 100%;
+  max-width: 100% !important;
+  min-height: 100dvh;
+  height: 100%;
+  // max-height: 100dvh !important;
+  overflow-y: hidden;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: start;
+  align-items: center;
+
+  background: linear-gradient(180deg, var(--dominant), var(--complement), var(--dominant));
+}
+// >> Header
+// Assistive technologies can identify the header element of a page as the banner
+// if it is a descendant of the body element, and not nested within an article,
+// aside, main, nav or section subsection. This ensures proper semantic structure
+// and accessibility for screen readers and other assistive tools.
+header {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  height: var(--header-h);
+  padding: var(--header-pad);
+  @extend .flx-x;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  // background: linear-gradient(var(--dominant) 50% , transparent);
+}
+footer {
+  position: relative;
+  bottom: 0;
+  // z-index: 3;
+  // height: var(--footer-h);
+  // min-height: var(--footer-h);
+  overflow: hidden;
+  padding: var(--header-pad);
+  @extend .flx-x;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: var(--text);
+  fill: var(--text);
+}
+// >> Main
+main {
+  @extend .fill-x;
+  display: block;
+  min-height: 100dvh;
+  padding: var(--main-pad);
+  overflow-y: hidden !important;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  position: relative;
+  justify-content: start;
+}
+.compensate-header {
+  padding-top: var(--header-h); // to compensate header
+}
+.compensate-footer {
+  padding-bottom: var(--footer-h); // to compensate footer
+}
+// >>> Section
+section {
+  @extend .flx;
+  min-width: 100%;
+  width: 100%;
+  max-width: 100vw;
+  justify-content: start;
+  align-items: flex-start;
+  overflow-y: visible;
+  overflow-x: visible;
+  padding: var(--section-pad);
+}
+
+// ## Spacings
+.gap-s {
+  gap: 0.33rem;
+}
+.gap-m {
+  gap: 0.66rem;
+}
+.gap-l {
+  gap: 1rem;
+}
+.gap-10 {
+  gap: 10vh;
+}
+.pad-s {
+  padding: 0.33rem;
+}
+.pad {
+  padding: 0.66rem;
+}
+
+// ## Transparencies
+.op-07 {
+  opacity: 0.7;
+}
+.op-05 {
+  opacity: 0.5;
+}
+.op-03 {
+  opacity: 0.3;
+}
+
+// ### Logo
+.logo {
+  color: var(--highlight) !important;
+  // stroke: var(--dominant);
+  // stroke-width: 2px;
+  // fill: none;
+  font-size: 4.33rem;
+  overflow: visible;
+}
+.logo svg {
+  overflow: visible;
+  // filter: drop-shadow(0 0 0.15em var(--action-glow));
+}
+
+// ## Headings
+// Heading information can be used by user agents to construct a table of contents for a document automatically.
+// Do not use heading elements to resize text. Instead, use the CSS font-size property.
+// Do not skip heading levels: always start from <h1>, followed by <h2> and so on.
+h1 {
+  color: var(--text);
+  font-size: var(--font-xl);
+  line-height: 100%;
+}
+h2 {
+  color: var(--text);
+  font-size: var(--font-l);
+  line-height: 1.33em;
+}
+h3 {
+  color: var(--text);
+  font-size: 1.1rem;
+  line-height: 140%;
+  text-align: left;
+}
+h4 {
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-align: left;
+}
+h5 {
+  color: var(--highlight);
+  font-size: var(--font-m);
+}
+h6 {
+  color: var(--text);
+  font-weight: 100;
+  font-size: var(--font-m);
+}
+p {
+  font-size: var(--font-m);
+  line-height: 1.66em;
+  text-align: left;
+  white-space: pre-line; // to render /n
+}
+
+blockquote {
+  color: var(--text);
+  font-weight: 300;
+  font-style: italic;
+  padding: 0.33rem;
+  text-align: left;
+  // opacity: 0.5;
+  animation: fade-in 1.2s ease-in;
+  animation-iteration-count: 1;
+}
+blockquote::before {
+  content: '\201C';
+}
+blockquote::after {
+  content: '\201C';
+}
+
+// # Lists
+ul {
+  padding: 0.33em 0;
+}
+ul li {
+  // padding: 0.33em 0;
+  // padding-right: 0.33em;
+  list-style-type: none;
+  height: auto;
+  text-align: left;
+  @extend p;
+  // font-weight: 700;
+  // color: var(--highlight);
+}
+
+// ## Inputs
+// ### Checkboxes
+input[type='checkbox'] {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font-size: 2rem;
+  padding: 0.1rem;
+  height: 1rem;
+  aspect-ratio: 3;
+  background-color: var(--action-glass);
+  // border: solid 1px var(--action-shade);
+  border-radius: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--action);
+  transition: all 0.2s ease-in;
+}
+input[type='checkbox']::before {
+  content: 'OFF';
+  // transform: scale(0);
+  overflow: hidden;
+  height: 0.66rem;
+  font-size: 0.66rem !important;
+  line-height: 0.66rem;
+  padding: 0;
+}
+input[type='checkbox']:checked::before {
+  content: 'ON';
+}
+// input[type='checkbox']:hover {
+//   // color: black;
+// }
+input[type='checkbox']:checked {
+  color: var(--dominant);
+  background-color: var(--action);
+}
+// ### Radios
+input[type='radio'] {
+  box-sizing: border-box;
+  width: 1rem;
+  height: 1rem;
+  // margin: 6px;
+  padding: 0;
+  border: 2px solid var(--action-shade);
+  // border-radius: 50%;
+  appearance: none;
+  background-color: var(--action-glass);
+  outline: none;
+}
+input[type='radio']:not(:disabled):checked {
+  // border-color: var(--action);
+  // background-color: var(--action);
+  background-clip: content-box;
+  padding: 2px;
+  background-color: var(--action-shade);
+}
+
+// ## Modals
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  @extend .flx-xy;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: color-mix(in srgb, var(--dominant) 90%, transparent);
+  backdrop-filter: blur(0.3rem);
+  transition: background-color 0.2s ease-in;
+  padding: 1.66rem;
+  overflow-y: auto;
+}
+.modal-content {
+  @extend .flx;
+  // height: 50%;
+  padding: 1.66rem;
+  // background-color: var(--action-glass);
+  border-radius: 0.5rem;
+  backdrop-filter: blur(3rem);
+  box-shadow: 0 0 1rem var(--highlight-glow);
+
+  transition: background-color 0.2s ease-in;
+}
+.modal-waiting {
+  @extend .modal;
+  // background-color: color-mix(in srgb, var(--dominant) 30%, transparent);
+  // transition: all 0.1s ease-in
+}
+// ## Forms
+form {
+  @extend .flx-x;
+  padding: 1rem;
+  transition: all 0.2s ease-in;
+}
+input {
+  @extend .font-main;
+  color: var(--action);
+  font-weight: 300;
+  font-size: 1.33rem;
+  background-color: var(--action-glass);
+  border: solid 1px var(--action-shade);
+  border-radius: 0.33rem;
+  padding: 0.33rem;
+  transition: all 0.2s ease-in;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: var(--dominant); */
+  /* opacity: 0.5; */
+}

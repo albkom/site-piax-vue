@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&display=swap');
+
+:root {
+  --font-header: 'Bevan', monospace;
+  --font-main: 'Cairo', monospace;
+
+  /* --font-m: 30px; */
+  --main-pad: 0 0rem;
+  --header-pad: 0 1.5rem;
+  --header-h: 20vh;
+}
+
+:root {
+  --dominant: #030e0a;
+  /* --dominant: hsl(24, 8%, 77%); */
+  --complement: #022d1e;
+  --action: #033a31;
+  --highlight: #bbefd6;
+  --text: #c7c4d9;
+  /* --text: #020204; */
+  --danger: #57a6a1;
+  --alt: #f4c430;
+}
+
+#header {
+  left: auto !important;
+  right: auto !important;
+}
+
+input[type='checkbox'] {
+  width: 1.5rem;
+  height: 1.5rem;
+  /* accent-color: var(--action); */
+  background-color: var(--dominant);
+  border-radius: var(--border-radius);
+  font-weight: bold;
+}
+
+/* --- SCROLLBAR STYLES --- */
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 0.25rem;
+  height: 0.25rem;
+  opacity: 0.5 !important;
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+  border-radius: 0.125rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--action);
+  border-radius: 0.125rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--action);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent !important;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--action) transparent;
+}
+
+a {
+  color: var(--action);
+}
+
+/* --- SPECIFIC STYLES --- */
+main {
+  overflow: visible !important;
+}
+
+[data-fadeIn] {
+  opacity: 0;
+}
+[data-slideIn] {
+  opacity: 0;
+}
+[data-slideInLeft] {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+[data-slideInRight] {
+  opacity: 0;
+  transform: translateX(20px);
+}
+[data-slideInRight]:disabled {
+  opacity: 0;
+  transform: translateX(20px);
+}
+[data-fallIn] {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.itagoflow[data-in='fade'] {
+  opacity: 0;
+}
+.itagoflow[data-in='slideFromTop'] {
+  opacity: 0;
+  transform: translateY(-1rem);
+}
+.itagoflow[data-in='slideFromBottom'] {
+  opacity: 0;
+  transform: translateY(1rem);
+}
+.itagoflow[data-in='slideFromLeft'] {
+  opacity: 0;
+  transform: translateX(-1rem);
+}
+.itagoflow[data-in='slideFromRight'] {
+  opacity: 0;
+  transform: translateX(1rem);
+}
+[data-itagoflow][data-in='fade'],
+[data-itagoflow][data-scroll='fade'] {
+  opacity: 0;
+}
+[data-itagoflow][data-in='slideFromTop'] {
+  opacity: 0;
+  transform: translateY(-1rem);
+}
+[data-itagoflow][data-in='slideFromBottom'] {
+  opacity: 0;
+  transform: translateY(1rem);
+}
+[data-itagoflow][data-in='slideFromLeft'] {
+  opacity: 0;
+  transform: translateX(-1rem);
+}
+[data-itagoflow][data-in='slideFromRight'] {
+  opacity: 0;
+  transform: translateX(1rem);
+}

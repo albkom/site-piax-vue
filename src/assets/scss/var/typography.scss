@@ -1,0 +1,78 @@
+// ## Typography
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Podkova:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&display=swap');
+$font-header: 'Bevan', monospace;
+$font-main: 'Cairo', monospace;
+// ### Fonts
+.font-header {
+  font-family: $font-header;
+  font-optical-sizing: auto;
+  // font-weight: 100;
+  font-variation-settings: 'slnt' 0;
+}
+.font-main {
+  font-family: $font-main;
+  // font-family: $font-main;
+  font-optical-sizing: auto;
+  // font-weight: 300;
+  font-variation-settings: 'slnt' 0;
+}
+.txt--s {
+  font-size: var(--font-s);
+}
+.txt--m {
+  font-size: var(--font-m);
+}
+.txt--l {
+  font-size: var(--font-l);
+}
+.txt--xl {
+  font-size: var(--font-xl);
+}
+.txt--xxl {
+  font-size: var(--font-xxl);
+}
+.lh-100 {
+  line-height: 1em;
+}
+.fw-100 {
+  font-weight: 100 !important;
+}
+.fw-200 {
+  font-weight: 200 !important;
+}
+.fw-300 {
+  font-weight: 300 !important;
+}
+.fw-400 {
+  font-weight: 400 !important;
+}
+.fw-500 {
+  font-weight: 500 !important;
+}
+.fw-600 {
+  font-weight: 600 !important;
+}
+.fw-700 {
+  font-weight: 700 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @extend .font-header;
+}
+
+button,
+a,
+table {
+  @extend .font-main;
+}
+
+p {
+  margin-bottom: 0.33em;
+}

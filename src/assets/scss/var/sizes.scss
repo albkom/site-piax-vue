@@ -1,0 +1,169 @@
+$base-mobile: 21px;
+$base-tablet: 21px;
+$base-computer: 21px;
+
+// Fonts
+$mobile-font-s: 15px;
+$mobile-font-m: 21px;
+$mobile-font-l: 36px;
+$mobile-font-xl: 48px;
+$mobile-font-xxl: 64px;
+
+$tablet-font-s: 18px;
+$tablet-font-m: 24px;
+$tablet-font-l: 48px;
+$tablet-font-xl: 64px;
+$tablet-font-xxl: 96px;
+
+$computer-font-s: 15px;
+$computer-font-m: 24px;
+$computer-font-l: 64px;
+$computer-font-xl: 96px;
+$computer-font-xxl: 196px;
+
+// Pads
+$mobile-pad-s: 0.3rem;
+$mobile-pad-m: 1.5rem;
+$mobile-pad-l: 1.8rem;
+
+$mobile-pad-s: 0.3rem;
+$tablet-pad-m: 1.5rem;
+$mobile-pad-l: 1.8rem;
+
+$computer-pad-s: 0.3rem;
+$computer-pad-m: 1.5rem;
+$computer-pad-l: 1.8rem;
+
+$mobile-border-m: 0.3rem;
+
+$mobile-border-radius: 0.66rem;
+
+$mobile-delta-xl: 1rem;
+
+// Mobile button heights
+$mobile-btn-h-s: 0.5rem;
+$mobile-btn-h-m: 3.3rem;
+$mobile-btn-h-l: 7rem;
+$mobile-btn-h-xl: $mobile-btn-h-l + 2 * $mobile-delta-xl;
+
+// Tablet button heights
+$tablet-btn-h-s: 0.6rem;
+$tablet-btn-h-m: 1.2rem;
+$tablet-btn-h-l: 5rem;
+
+// PC button heights
+$pc-btn-h-s: 0.7rem;
+$pc-btn-h-m: 1.4rem;
+$pc-btn-h-l: 3.5rem;
+
+$mobile-menu-button: 1rem;
+
+header {
+  //   background-color: antiquewhite !important;
+}
+section {
+  //   background-color: ivory !important;
+}
+
+// ## Media Queries
+// 320px — 480px: Mobile devices (DEFAULT)
+:root {
+  --header-h: #{$mobile-btn-h-m};
+  --header-pad: #{$mobile-delta-xl} #{$mobile-pad-m};
+  --footer-h: 8rem;
+  --main-pad: 0 0; //#{$mobile-pad-m};
+  --menu-pad: 0 #{$mobile-pad-m};
+  --section-pad: 0rem 0; // #{$mobile-pad-m}; // to show shadow, otherwise cutted by main
+  --size-mid: 105px;
+  --size-big: 333px;
+
+  --shadow-1: 0 0 2dp 0.1dp color-mix(in srgb, var(--darker) 12%, transparent);
+
+  --font-s: #{$mobile-font-s};
+  --font-m: #{$mobile-font-m};
+  --font-l: #{$mobile-font-l};
+  --font-xl: #{$mobile-font-xl};
+  --font-xxl: #{$mobile-font-xxl};
+
+  --pad-s: #{$mobile-pad-s};
+  --pad-m: #{$mobile-pad-m};
+  --pad-l: #{$mobile-pad-l};
+
+  --border-m: #{$mobile-border-m};
+  --border-radius: #{$mobile-border-radius};
+
+  --menu-button-h: $mobile-menu-button;
+
+  --btn-h-s: #{$mobile-btn-h-s};
+  --btn-h-m: #{$mobile-btn-h-m};
+  --btn-h-l: #{$mobile-btn-h-l};
+}
+main,
+footer {
+  min-width: 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+// 481px — 768px: iPads, Tablets
+@media (min-width: 481px) {
+  :root {
+    --header-h: 12rem;
+    --footer-h: 8rem;
+    --header-pad: 0rem 2.66rem;
+    --main-pad: 0rem 0;
+    --section-pad: 0rem 0; // #{$tablet-pad-m}; // to show shadow, otherwise cutted by main
+
+    --font-s: #{$tablet-font-s};
+    --font-m: #{$tablet-font-m};
+    --font-l: #{$tablet-font-l};
+    --font-xl: #{$tablet-font-xl};
+    --font-xxl: #{$tablet-font-xxl};
+  }
+  main,
+  footer {
+    min-width: 481px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+// 769px — 1024px: Small screens, laptops
+// 1025px — 1200px: Desktops, large screens
+// 1201px and more —  Extra large screens, TV
+@media (min-width: 769px) {
+  :root {
+    --header-h: 16rem;
+    --footer-h: 8rem;
+    --header-pad: 0rem 5rem;
+    --main-pad: 0rem 0;
+    --section-pad: 0rem 0; //#{$computer-pad-m}; // to show shadow, otherwise cutted by main
+
+    --font-s: #{$computer-font-s};
+    --font-m: #{$computer-font-m};
+    --font-l: #{$computer-font-l};
+    --font-xl: #{$computer-font-xl};
+    --font-xxl: #{$computer-font-xxl};
+  }
+  .max--width,
+  main,
+  footer {
+    max-width: 2080px !important;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .only--tablet-computer {
+    display: none;
+  }
+}
+@media (min-width: 481px) {
+  .only--mobile {
+    display: none;
+  }
+}
+@media (min-width: 769px) {
+  .only--mobile {
+    display: none;
+  }
+}

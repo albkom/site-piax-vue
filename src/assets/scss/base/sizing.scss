@@ -1,0 +1,299 @@
+@use 'sass:math';
+
+@use './mixins';
+
+// ## Margins and Z
+@for $i from 1 through 10 {
+  .m-#{$i * 10}vh {
+    margin: #{$i * 10}vh;
+  }
+  .mt-#{$i}vh {
+    margin-top: #{$i}vh;
+  }
+  .mb-#{$i}vh {
+    margin-bottom: #{$i}vh;
+  }
+  .mx-#{$i}vh {
+    margin-left: #{$i}vh;
+    margin-right: #{$i}vh;
+  }
+  .my-#{$i}vh {
+    margin-bottom: #{$i}vh;
+    margin-top: #{$i}vh;
+  }
+  .z-#{$i} {
+    z-index: $i;
+  }
+}
+
+// ## Height and Width
+@for $i from 1 through 20 {
+  .h-#{$i * 5} {
+    @include mixins.fixed-height(#{$i * 5}'%');
+  }
+  .w-#{$i * 5} {
+    @include mixins.fixed-width(#{$i * 5}'%');
+  }
+  .h-#{$i * 5}vh {
+    @include mixins.fixed-height(#{$i * 5}vh);
+  }
+  .h-#{$i * 5}vh-min {
+    // @include mixins.fixed-height(#{$i * 5}vh);
+    min-height: #{$i * 5}vh;
+    // height: #{$i * 5}vh;
+  }
+  .w-#{$i * 5}vh {
+    @include mixins.fixed-width(#{$i * 5}vh);
+  }
+  .h-#{$i * 5}vw {
+    @include mixins.fixed-height(#{$i * 5}vw);
+  }
+  .w-#{$i * 5}vw {
+    @include mixins.fixed-width(#{$i * 5}vw);
+  }
+}
+@for $i from 1 through 9 {
+  .h-#{$i}vh {
+    @include mixins.fixed-height(#{$i}vh);
+  }
+  .h-#{$i}rem {
+    @include mixins.fixed-height(#{$i}rem);
+  }
+}
+
+// # Overrides
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar {
+  display: none !important;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+html {
+  -ms-overflow-style: none !important; /* IE and Edge */
+  scrollbar-width: none !important; /* Firefox */
+  // overflow: hidden;
+}
+html,
+body {
+  min-width: 100%;
+  width: 100%;
+  max-width: 100% !important;
+  padding: 0 !important;
+  -webkit-overflow-scrolling: touch;
+  user-select: none;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+// To remove datalist dropdown in Chrome
+input::-webkit-calendar-picker-indicator {
+  display: none !important;
+}
+// To remove Android blue highlight
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+// ### Buttons
+button,
+.button {
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  touch-action: manipulation;
+  line-height: 100%;
+  border: none;
+  background: none;
+}
+
+// ## Rotation
+.deg-90 {
+  transform: rotate(90deg);
+}
+.deg-180 {
+  transform: rotate(180deg);
+}
+.deg-270 {
+  transform: rotate(-90deg);
+}
+
+// ## Positioning
+.relative {
+  position: relative;
+}
+.absolute {
+  top: 0;
+  position: absolute;
+}
+.fixed-top {
+  position: fixed;
+  top: 0;
+}
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+}
+
+// ## Filling
+.fill-x {
+  min-width: 100%;
+  width: 100%;
+  max-width: 100%;
+}
+.fill-y {
+  min-height: 100%;
+  height: 100%;
+  max-height: 100%;
+}
+
+// ## Layout
+.flx {
+  display: flex;
+  // Default is column center center
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.flx-x {
+  @extend .flx;
+  @extend .fill-x;
+}
+.flx-y {
+  @extend .flx;
+  @extend .fill-y;
+}
+.flx-xy {
+  @extend .flx;
+  @extend .fill-x;
+  @extend .fill-y;
+}
+
+// ### Direction
+.left {
+  align-items: start;
+}
+.row.left {
+  align-items: center;
+  justify-content: flex-start;
+}
+.row.right {
+  justify-content: flex-end;
+}
+.right {
+  align-items: end;
+}
+.row {
+  flex-direction: row;
+}
+.row.wrap {
+  flex-wrap: wrap;
+}
+.row.start {
+  justify-content: flex-start;
+}
+.top {
+  justify-content: start;
+}
+.bottom {
+  justify-content: end;
+}
+.row.top {
+  align-items: flex-start;
+}
+.row.around {
+  justify-content: space-around;
+}
+.row.between {
+  justify-content: space-between;
+}
+.row.end {
+  justify-content: flex-end;
+}
+.flx.stretch {
+  justify-content: stretch;
+  width: 100%;
+}
+.reverse {
+  flex-direction: column-reverse;
+}
+.row.reverse {
+  flex-direction: row-reverse;
+}
+
+// ### Aspect Ratio
+.ar-1 {
+  aspect-ratio: 1 !important;
+}
+.ar-2 {
+  aspect-ratio: 2 !important;
+}
+
+// ### Text Orientation
+.txt--center,
+.txt--center > * {
+  text-align: center;
+}
+.txt--left,
+.txt--left > * {
+  text-align: left;
+}
+.txt--right,
+.txt--right > * {
+  text-align: right;
+}
+.txt--justify,
+.txt--justify > * {
+  text-align: justify;
+}
+
+// ### Overflow
+.scroll {
+  overflow-y: scroll !important;
+  overflow-x: hidden;
+}
+.scroll-x {
+  overflow-y: hidden !important;
+  overflow-x: scroll !important;
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+
+// ### Utilities
+.pad--zero {
+  padding: 0 !important;
+}
+.pad-x-0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.pad-y-0 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.no-click {
+  pointer-events: none;
+}
+.hidden {
+  pointer-events: none;
+  opacity: 0;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.circle {
+  border-radius: 50%;
+  aspect-ratio: 1 !important;
+}

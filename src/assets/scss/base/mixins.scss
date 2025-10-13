@@ -1,0 +1,12 @@
+// ## Mixins
+@mixin fixed-height($height) {
+  min-height: $height;
+  height: $height;
+  max-height: $height;
+}
+
+@mixin fixed-width($width) {
+  min-width: $width;
+  width: $width;
+  max-width: $width;
+}

@@ -1,0 +1,58 @@
+@use '../base/sizing';
+
+.card {
+  @extend .flx;
+  // gap: 0.66rem;
+  border-radius: 0.66rem;
+  background-color: var(--dominant);
+  box-shadow: var(--shadow-1);
+
+  transition: all 0.2s ease-in;
+}
+.card p {
+  opacity: 0.9;
+}
+.card > .card {
+  box-shadow: 0 0 0.1rem 0.01rem color-mix(in srgb, var(--complement) 10%, transparent);
+}
+.card--dominant {
+  @extend .card;
+  background-color: var(--dominant);
+}
+.card--highlight {
+  @extend .card;
+  background-color: var(--highlight);
+}
+.card--action {
+  @extend .card;
+  background-color: var(--action);
+}
+.card--text {
+  @extend .card;
+  background-color: var(--text);
+}
+.card--complement {
+  @extend .card;
+  background-color: var(--complement);
+}
+.card--light {
+  @extend .card;
+  background-color: var(--light);
+}
+.card--lighter {
+  @extend .card;
+  background-color: var(--lighter);
+  box-shadow: inset 0 0 var(--border-m) var(--border-m) var(--light);
+}
+.card--dark {
+  @extend .card;
+  background-color: var(--dark);
+}
+.card--darker {
+  @extend .card;
+  background-color: var(--darker);
+  color: var(--light);
+}
+.card--darker * {
+  color: var(--complement);
+}

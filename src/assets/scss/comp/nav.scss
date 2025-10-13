@@ -1,0 +1,80 @@
+@use '../base/mixins.scss';
+
+#menu {
+  background-color: var(--darker);
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 30;
+
+  // MOTION
+  transform: translateY(-100%);
+}
+#menu-header {
+  padding: var(--menu-pad);
+  padding-top: 1rem;
+  // MOTION
+  opacity: 0;
+}
+nav {
+  // @include mixins.fixed-height(var(--btn-h-m));
+  z-index: 11;
+  @include mixins.fixed-width(100%);
+  padding: var(--menu-pad);
+}
+nav ul {
+  @include mixins.fixed-width(100%);
+  padding: 0;
+  gap: 0;
+}
+.nav-link {
+  @include mixins.fixed-width(100%);
+  margin: var(--pad-m) 0;
+  //   text-transform: uppercase;
+  line-height: 150%;
+  text-align: center;
+  color: var(--action);
+  //   border-bottom: solid 0.2rem var(--dark);
+  display: flex;
+  overflow: hidden;
+
+  font-size: var(--font-m);
+  border-bottom: solid 1pt var(--action);
+
+  // MOTION
+  opacity: 0;
+}
+.nav-link a {
+  @include mixins.fixed-width(100%);
+  // color: var(--action);
+  text-decoration: none;
+  // text-shadow: 0 0 1rem var(--dominant);
+}
+// NOT WORKING
+.nav-link a.selected {
+  color: var(--darker) !important;
+  pointer-events: none;
+  opacity: 0.5;
+  // text-shadow: 0 0 1rem var(--dominant);
+}
+.nav-logo {
+  background-color: transparent;
+  border: none;
+  color: var(--highlight) !important;
+  fill: var(--highlight) !important;
+}
+.nav-open {
+  color: var(--text);
+  border: none;
+  border-color: var(--text);
+  background-color: var(--dark);
+  // background-color: color-mix(in srgb, var(--action) 10%, transparent) !important;
+  backdrop-filter: blur(0.3rem) !important;
+}
+// .nav-close {
+//   background-color: transparent !important;
+//   border: none !important;
+//   color: var(--text);
+//   font-weight: 700;
+//   border-bottom: solid 0.2rem var(--text);
+// }

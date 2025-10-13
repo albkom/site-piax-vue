@@ -1,0 +1,663 @@
+[
+  {
+    "name": "bruschette-al-pesto-(finta)",
+    "title": "Bruschette Al Pesto (finta)",
+    "authorId": "AI",
+    "color": "",
+    "details": {
+      "priceRange": 1,
+      "effort": 1,
+      "minutes": 10,
+      "persons": 4
+    },
+    "shortDescription": [
+      "Un antipasto semplice e veloce che esalta il sapore del pesto."
+    ],
+    "ingredients": [
+      {
+        "name": "Pane",
+        "quantity": "4",
+        "unit": "fette",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "casereccio"
+      },
+      {
+        "name": "Pesto",
+        "quantity": "100",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "fresco o acquistato"
+      },
+      {
+        "name": "Pomodorini",
+        "quantity": "100",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "tagliati a metà"
+      },
+      {
+        "name": "Olio d'Oliva",
+        "quantity": "1",
+        "unit": "cucchiaio",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "extra vergine"
+      }
+    ],
+    "longDescription": [
+      "Le Bruschette Al Pesto sono perfette per iniziare un pasto con un tocco di sapore italiano."
+    ],
+    "sections": [
+      {
+        "title": "Introduzione",
+        "contents": [
+          "Le Bruschette Al Pesto sono un antipasto versatile e gustoso, ideale per ogni occasione.",
+          {
+            "src": "./img.jpg",
+            "alt": "Bruschette Al Pesto"
+          }
+        ]
+      },
+      {
+        "title": "Preparazione",
+        "contents": [
+          "1. Tostate le fette di pane su una griglia o in forno.",
+          "2. Spalmate il pesto su ogni fetta.",
+          "3. Aggiungete i pomodorini e un filo d'olio.",
+          {
+            "src": "./img.jpg",
+            "alt": "Preparazione delle Bruschette"
+          }
+        ]
+      },
+      {
+        "title": "Servizio",
+        "contents": [
+          {
+            "src": "./img.jpg",
+            "alt": "Servizio delle Bruschette"
+          },
+          "Servite le bruschette calde o a temperatura ambiente."
+        ]
+      }
+    ],
+    "recap": [
+      "Tostate il pane.",
+      "Spalmate il pesto.",
+      "Aggiungete pomodorini e olio."
+    ]
+  },
+  {
+    "name": "gnocchi-al-pesto-(finta)",
+    "title": "Gnocchi Al Pesto (finta)",
+    "authorId": "AI",
+    "color": "",
+    "details": {
+      "priceRange": 1,
+      "effort": 1,
+      "minutes": 15,
+      "persons": 4
+    },
+    "shortDescription": [
+      "Un piatto veloce e gustoso che combina la morbidezza degli gnocchi con il sapore del pesto."
+    ],
+    "ingredients": [
+      {
+        "name": "Gnocchi di Patate",
+        "quantity": "500",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "freschi o confezionati"
+      },
+      {
+        "name": "Pesto",
+        "quantity": "150",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "fresco o acquistato"
+      },
+      {
+        "name": "Parmigiano Reggiano",
+        "quantity": "50",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "grattugiato"
+      },
+      {
+        "name": "Olio d'Oliva",
+        "quantity": "1",
+        "unit": "cucchiaio",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "extra vergine"
+      }
+    ],
+    "longDescription": [
+      "Gli Gnocchi Al Pesto sono una soluzione perfetta per un pasto rapido ma delizioso. Ideali per chi ama i sapori semplici e genuini."
+    ],
+    "sections": [
+      {
+        "title": "Introduzione",
+        "contents": [
+          "Gli Gnocchi Al Pesto sono un classico della cucina italiana, perfetti per un pranzo veloce o una cena leggera.",
+          {
+            "src": "./img.jpg",
+            "alt": "Gnocchi Al Pesto"
+          }
+        ]
+      },
+      {
+        "title": "Preparazione",
+        "contents": [
+          "1. Cuocete gli gnocchi in abbondante acqua salata fino a quando non salgono a galla.",
+          "2. Scolateli e trasferiteli in una ciotola.",
+          "3. Aggiungete il pesto e mescolate delicatamente per ricoprire gli gnocchi.",
+          "4. Servite con una spolverata di Parmigiano e un filo d'olio.",
+          {
+            "src": "./img.jpg",
+            "alt": "Preparazione degli Gnocchi"
+          }
+        ]
+      },
+      {
+        "title": "Servizio",
+        "contents": [
+          {
+            "src": "./img.jpg",
+            "alt": "Servizio degli Gnocchi"
+          },
+          "Servite gli gnocchi caldi, accompagnati da un bicchiere di vino bianco."
+        ]
+      }
+    ],
+    "recap": [
+      "Cuocete gli gnocchi.",
+      "Mescolate con il pesto.",
+      "Servite con Parmigiano e olio d'oliva."
+    ]
+  },
+  {
+    "name": "lasagne-al-pesto-(finta)",
+    "title": "Lasagne Al Pesto (finta)",
+    "authorId": "AI",
+    "color": "",
+    "details": {
+      "priceRange": 3,
+      "effort": 2,
+      "minutes": 40,
+      "persons": 6
+    },
+    "shortDescription": [
+      "Un piatto ricco e cremoso che unisce il sapore del pesto genovese con la delicatezza della besciamella."
+    ],
+    "ingredients": [
+      {
+        "name": "Sfoglie di Lasagna",
+        "quantity": "250",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "fresche o secche"
+      },
+      {
+        "name": "Pesto",
+        "quantity": "200",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "fatto in casa o acquistato"
+      },
+      {
+        "name": "Besciamella",
+        "quantity": "500",
+        "unit": "ml",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "preparata o pronta"
+      },
+      {
+        "name": "Parmigiano Reggiano",
+        "quantity": "100",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "grattugiato"
+      },
+      {
+        "name": "Mozzarella",
+        "quantity": "200",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "a cubetti"
+      }
+    ],
+    "longDescription": [
+      "Hai voglia di un piatto che stupisca i tuoi ospiti ma che sia semplice da preparare? Le Lasagne Al Pesto sono la soluzione perfetta. Con pochi ingredienti e un po' di amore, puoi creare un piatto che celebra i sapori della Liguria."
+    ],
+    "sections": [
+      {
+        "title": "Introduzione",
+        "contents": [
+          "Le Lasagne Al Pesto sono un'alternativa originale alle classiche lasagne al ragù. Perfette per un pranzo domenicale o una cena speciale, queste lasagne combinano la cremosità della besciamella con il sapore intenso del pesto.",
+          {
+            "src": "./img.jpg",
+            "alt": "Lasagne Al Pesto"
+          }
+        ]
+      },
+      {
+        "title": "Preparazione",
+        "contents": [
+          "1. Preparate la besciamella se non l'avete già pronta. Scaldate il latte con burro e farina, mescolando fino a ottenere una consistenza cremosa.",
+          "2. In una teglia, stendete un sottile strato di besciamella sul fondo.",
+          "3. Alternate strati di sfoglie di lasagna, besciamella, pesto, mozzarella e Parmigiano.",
+          "4. Continuate fino a esaurire gli ingredienti, terminando con uno strato di besciamella e una generosa spolverata di Parmigiano.",
+          {
+            "src": "./img.jpg",
+            "alt": "Preparazione delle Lasagne"
+          },
+          "5. Cuocete in forno preriscaldato a 180°C per circa 25-30 minuti, finché la superficie non sarà dorata e croccante."
+        ]
+      },
+      {
+        "title": "Servizio",
+        "contents": [
+          {
+            "src": "./img.jpg",
+            "alt": "Servizio delle Lasagne"
+          },
+          "Servite le Lasagne Al Pesto calde, accompagnate da un bicchiere di vino bianco fresco. Questo piatto conquisterà tutti con il suo sapore unico e la sua consistenza cremosa."
+        ]
+      }
+    ],
+    "recap": [
+      "Preparate la besciamella.",
+      "Stendete gli strati di lasagna, besciamella, pesto, mozzarella e Parmigiano.",
+      "Cuocete in forno a 180°C per 25-30 minuti.",
+      "Servite calde con un bicchiere di vino bianco."
+    ]
+  },
+  {
+    "name": "pasta-alla-portofino",
+    "title": "Pasta Alla Portofino",
+    "authorId": "mario",
+    "color": "",
+    "details": {
+      "priceRange": 2,
+      "effort": 1,
+      "minutes": 20,
+      "persons": 4
+    },
+    "shortDescription": [
+      "Un classico piatto italiano che combina i sapori del pesto fresco e dei pomodori maturi."
+    ],
+    "ingredients": [
+      {
+        "name": "Pasta",
+        "quantity": "500",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "pastificio La Margherita"
+      },
+      {
+        "name": "Pesto",
+        "quantity": "100",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "quello già aperto in frigo"
+      },
+      {
+        "name": "Passata di Pomodoro",
+        "quantity": "250",
+        "unit": "ml",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "passata Mutti"
+      }
+    ],
+    "longDescription": [
+      "Hai del pesto avanzato in frigo? Ti stai chiedendo se basta per condire il mezzo kilo di pasta che stai per cucinare?",
+      "Ecco una ricetta che fa al caso tuo."
+    ],
+    "sections": [
+      {
+        "title": "Introduzione",
+        "contents": [
+          "La Pasta Alla Portofino è un esempio perfetto di come valorizzare ingredienti non freschi, come il pesto avanzato o una passata di pomodoro già aperta, trasformandoli in un piatto delizioso.",
+          {
+            "src": "./img.jpg",
+            "alt": "Pasta Alla Portofino"
+          }
+        ]
+      },
+      {
+        "title": "Preparazione",
+        "contents": [
+          "Per iniziare, iniziare a cuocere la pasta.",
+          "Nel frattempo, prendere dal frigorifero il pesto aperto. Questo passaggio è fondamentale per ottenere un sapore autentico.",
+          "Scaldate la passata di pomodoro in una padella. Se gradite, potete aggiungere uno spicchio d'aglio per un aroma più intenso, tenendo però presente che il pesto contiene già aglio.",
+          {
+            "src": "./img.jpg",
+            "alt": "Preparazione della passata"
+          },
+          "Lasciare intiepidire leggermente la salsa prima di unirla al pesto. Questo passaggio aiuta a preservare quel che rimane della freschezza del pesto e a bilanciare i sapori.",
+          "Scolare la pasta al dente e mescolarla nella scodella con i condimenti fino a ricoprirla uniformemente."
+        ]
+      },
+      {
+        "title": "Servizio",
+        "contents": [
+          {
+            "src": "./img.jpg",
+            "alt": "Servizio del Piatto"
+          },
+          "Servire la Pasta Alla Portofino in un piatto esagonale con una pioggia incessante di Parmigiano e un filo d'olio d'oliva. Questo tocco finale esalta i sapori del piatto.",
+          "Accompagnare con una Peroni da 75 per un'esperienza culinaria autentica.",
+          "Questa ricetta dimostra che con un po' di creatività è possibile ridurre gli sprechi in cucina e ottenere comunque un risultato saporito e sfizioso."
+        ]
+      }
+    ],
+    "recap": [
+      "Mettere su l'acqua per la pasta.",
+      "Prendere dal frigo il pesto avanzato dalla sera prima.",
+      "Scaldare la passata in padella.",
+      "Miscelare salsa e pesto in una scodella.",
+      "Scolare la pasta e buttare nella scodella.",
+      "Servire in un piatto, con pioggia di Parmigiano e un filo d'olio buono."
+    ]
+  },
+  {
+    "name": "pizza-al-pesto-(finta)",
+    "title": "Pizza Al Pesto (finta)",
+    "authorId": "AI",
+    "color": "",
+    "details": {
+      "priceRange": 3,
+      "effort": 2,
+      "minutes": 25,
+      "persons": 4
+    },
+    "shortDescription": [
+      "Una pizza originale che combina il sapore del pesto con la mozzarella filante."
+    ],
+    "ingredients": [
+      {
+        "name": "Impasto per Pizza",
+        "quantity": "1",
+        "unit": "base",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "pronto o fatto in casa"
+      },
+      {
+        "name": "Pesto",
+        "quantity": "100",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "fresco o acquistato"
+      },
+      {
+        "name": "Mozzarella",
+        "quantity": "200",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "a fette"
+      },
+      {
+        "name": "Pomodorini",
+        "quantity": "100",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "tagliati a metà"
+      }
+    ],
+    "longDescription": [
+      "La Pizza Al Pesto è una variante creativa della classica pizza margherita, perfetta per chi ama sperimentare nuovi sapori."
+    ],
+    "sections": [
+      {
+        "title": "Introduzione",
+        "contents": [
+          "La Pizza Al Pesto è una scelta perfetta per una cena informale o una serata con amici.",
+          {
+            "src": "./img.jpg",
+            "alt": "Pizza Al Pesto"
+          }
+        ]
+      },
+      {
+        "title": "Preparazione",
+        "contents": [
+          "1. Stendete l'impasto su una teglia.",
+          "2. Spalmate il pesto sulla base.",
+          "3. Aggiungete la mozzarella e i pomodorini.",
+          "4. Cuocete in forno preriscaldato a 220°C per 10-12 minuti.",
+          {
+            "src": "./img.jpg",
+            "alt": "Preparazione della Pizza"
+          }
+        ]
+      },
+      {
+        "title": "Servizio",
+        "contents": [
+          {
+            "src": "./img.jpg",
+            "alt": "Servizio della Pizza"
+          },
+          "Servite la pizza calda, tagliata a spicchi."
+        ]
+      }
+    ],
+    "recap": [
+      "Stendete l'impasto.",
+      "Spalmate il pesto e aggiungete mozzarella e pomodorini.",
+      "Cuocete in forno a 220°C.",
+      "Servite calda."
+    ]
+  },
+  {
+    "name": "risotto-al-pesto-(finta)",
+    "title": "Risotto Al Pesto (finta)",
+    "authorId": "AI",
+    "color": "",
+    "details": {
+      "priceRange": 2,
+      "effort": 1,
+      "minutes": 30,
+      "persons": 4
+    },
+    "shortDescription": [
+      "Un risotto cremoso e aromatico che esalta il sapore del pesto genovese."
+    ],
+    "ingredients": [
+      {
+        "name": "Riso Carnaroli",
+        "quantity": "320",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "di alta qualità"
+      },
+      {
+        "name": "Pesto",
+        "quantity": "150",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "fresco o acquistato"
+      },
+      {
+        "name": "Brodo Vegetale",
+        "quantity": "1",
+        "unit": "l",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "caldo"
+      },
+      {
+        "name": "Parmigiano Reggiano",
+        "quantity": "50",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "grattugiato"
+      },
+      {
+        "name": "Burro",
+        "quantity": "30",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "per mantecare"
+      }
+    ],
+    "longDescription": [
+      "Il Risotto Al Pesto è un piatto semplice ma raffinato, perfetto per chi ama i sapori intensi e la consistenza cremosa del risotto."
+    ],
+    "sections": [
+      {
+        "title": "Introduzione",
+        "contents": [
+          "Il Risotto Al Pesto è una ricetta che unisce la tradizione del risotto italiano con il sapore unico del pesto genovese. Ideale per una cena elegante o un pranzo veloce.",
+          {
+            "src": "./img.jpg",
+            "alt": "Risotto Al Pesto"
+          }
+        ]
+      },
+      {
+        "title": "Preparazione",
+        "contents": [
+          "1. Tostate il riso in una casseruola senza grassi.",
+          "2. Aggiungete un mestolo di brodo caldo e mescolate fino a completo assorbimento.",
+          "3. Continuate ad aggiungere brodo poco alla volta, mescolando, fino a cottura del riso.",
+          "4. A fine cottura, spegnete il fuoco e aggiungete il pesto, il burro e il Parmigiano. Mantecate fino a ottenere una consistenza cremosa.",
+          {
+            "src": "./img.jpg",
+            "alt": "Preparazione del Risotto"
+          }
+        ]
+      },
+      {
+        "title": "Servizio",
+        "contents": [
+          {
+            "src": "./img.jpg",
+            "alt": "Servizio del Risotto"
+          },
+          "Servite il risotto caldo, decorato con una foglia di basilico fresco e un filo d'olio d'oliva."
+        ]
+      }
+    ],
+    "recap": [
+      "Tostate il riso.",
+      "Cuocete con il brodo caldo.",
+      "Mantecate con pesto, burro e Parmigiano.",
+      "Servite caldo con basilico fresco."
+    ]
+  },
+  {
+    "name": "trofie-al-pesto-(finta)",
+    "title": "Trofie Al Pesto (finta)",
+    "authorId": "AI",
+    "color": "",
+    "details": {
+      "priceRange": 1,
+      "effort": 1,
+      "minutes": 20,
+      "persons": 4
+    },
+    "shortDescription": [
+      "Un piatto tradizionale ligure che esalta il sapore autentico del pesto."
+    ],
+    "ingredients": [
+      {
+        "name": "Trofie",
+        "quantity": "400",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "fresche o secche"
+      },
+      {
+        "name": "Pesto",
+        "quantity": "150",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "fresco o acquistato"
+      },
+      {
+        "name": "Patate",
+        "quantity": "2",
+        "unit": "medie",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "tagliate a cubetti"
+      },
+      {
+        "name": "Fagiolini",
+        "quantity": "100",
+        "unit": "g",
+        "price": "",
+        "priceUnit": "",
+        "suggestedBrand": "freschi"
+      }
+    ],
+    "longDescription": [
+      "Le Trofie Al Pesto sono un classico della cucina ligure, perfette per chi ama i sapori autentici e genuini."
+    ],
+    "sections": [
+      {
+        "title": "Introduzione",
+        "contents": [
+          "Le Trofie Al Pesto sono un piatto che celebra la tradizione ligure, combinando pasta, patate e fagiolini con il sapore unico del pesto.",
+          {
+            "src": "./img.jpg",
+            "alt": "Trofie Al Pesto"
+          }
+        ]
+      },
+      {
+        "title": "Preparazione",
+        "contents": [
+          "1. Cuocete le patate e i fagiolini in abbondante acqua salata.",
+          "2. Aggiungete le trofie nella stessa pentola e cuocete fino a cottura.",
+          "3. Scolate il tutto e mescolate con il pesto in una ciotola.",
+          {
+            "src": "./img.jpg",
+            "alt": "Preparazione delle Trofie"
+          }
+        ]
+      },
+      {
+        "title": "Servizio",
+        "contents": [
+          {
+            "src": "./img.jpg",
+            "alt": "Servizio delle Trofie"
+          },
+          "Servite le trofie calde, con una spolverata di Parmigiano."
+        ]
+      }
+    ],
+    "recap": [
+      "Cuocete patate e fagiolini.",
+      "Aggiungete le trofie e cuocete.",
+      "Mescolate con il pesto e servite."
+    ]
+  }
+]

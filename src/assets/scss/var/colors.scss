@@ -1,0 +1,54 @@
+@use 'sass:color';
+
+:root {
+  --dominant: #1a1a1a;
+  --complement: #3a3a3a;
+  --action: #3ac091;
+  --highlight: #7ac365;
+  --text: #fafafa;
+  --danger: #f25822;
+  --alt: #f4c430;
+
+  --lighter: color-mix(in srgb, var(--dominant), white 75%);
+  --light: color-mix(in srgb, var(--dominant), white);
+  --dark: color-mix(in srgb, var(--dominant), black);
+  --darker: color-mix(in srgb, var(--dominant), black 75%);
+}
+
+// ### Text Colors
+.dominant {
+  color: var(--dominant);
+}
+.complement {
+  color: var(--complement);
+}
+.action {
+  color: var(--action);
+}
+.highlight {
+  color: var(--highlight);
+}
+.text {
+  color: var(--text);
+}
+.danger {
+  color: var(--danger);
+}
+.alternative {
+  color: var(--alt);
+}
+
+// ### Colors Selection
+$chaouen: #468fea; // Chefchaouen Blue
+$keppel: #3ab09e; // Keppel
+$mantis: #7ac365; // Mantis green represents the green color of certain grass-dwelling species of praying mantis.
+$saffron: #f4c430; // The first recorded use of saffron as a color name in English was in 1200. It is considered as the most important colour in Hinduism. It is worn by the monks of the Theravada tradition.
+$flame: #f25822; // The first recorded use of flame as a color name in English was in 1590.
+$wisteria: #c9a0dc; // Wisteria (glicine) blooms. A crayon of this color and name was formulated by Crayola in 1993.
+$alabaster: #f1efe7; // Alabaster
+$gold: #775d0d;
+$silver: #88878b;
+$bronze: #986634;
+$ruby: #a41b1b;
+$alabaster: #c9c3bf;
+$indigo: #32127a;

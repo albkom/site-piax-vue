@@ -1,0 +1,184 @@
+@use '../base/mixins.scss';
+
+// ## Buttons
+button,
+a.button {
+  @include mixins.fixed-height('var(--btn-h-m)');
+
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.1rem;
+  border: solid 1pt var(--action);
+  box-shadow:
+    inset 0 0 0.2dp 0.1dp #0000001a,
+    0 0 0.1dp 0.05dp #0000001a;
+
+  font-size: 1rem;
+  text-decoration: none;
+
+  color: var(--action);
+  background-color: var(--dominant);
+
+  overflow: visible;
+  // transition:
+  //   filter 0.2s ease-in,
+  //   background-color 0.2s ease-in;
+}
+
+button.small {
+  @include mixins.fixed-height('var(--btn-h-s)');
+}
+button.medium {
+  @include mixins.fixed-height('var(--btn-h-m)');
+  height: 300px !important;
+}
+button.large {
+  @include mixins.fixed-height('var(--btn-h-l)');
+}
+button.button--icon,
+a.button--icon {
+  // padding: 0.33rem;
+  // height: var(--btn-h-m);
+  @include mixins.fixed-height(var(--btn-h-m));
+  @include mixins.fixed-width(var(--btn-h-m));
+
+  border: none;
+  padding: var(--pad-s);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // background: none !important;
+
+  // color: var(--text);
+  // background: linear-gradient(45deg, var(--complement), var(--dominant), var(--dark));
+  // background: linear-gradient(45deg, var(--complement), var(--dominant));
+  background-color: var(--action);
+
+  color: var(--text);
+  // box-shadow:
+  //   inset 0 0 0.2rem 0.1rem var(--dark),
+  //   0 0 0.1rem 0.05rem #0000001a;
+
+  box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.5);
+  border: solid 2pt var(--action);
+  border-radius: 50%;
+  aspect-ratio: 1;
+  transition: all 0.1s;
+}
+
+button.button--icon svg,
+a.button--icon svg {
+  // width: var(--btn-h-m);
+  width: 100%;
+  padding: 0;
+  color: currentColor;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0.1rem;
+  // filter: drop-shadow(0 0 0.1rem var(--dark));
+}
+.button--icon:hover {
+  background-color: color-mix(in srgb, var(--action), var(--dark));
+}
+.button--icon:focus {
+  background-color: color-mix(in srgb, var(--action), var(--dark));
+}
+.button--icon:active {
+  transform: scale(1.05);
+  background-color: color-mix(in srgb, var(--action), var(--darker));
+}
+.icon {
+  color: var(--highlight);
+  height: 1.66rem;
+  filter: drop-shadow(0 0 0.05em var(--highlight-glow));
+  padding: 0;
+}
+.icon-action {
+  @extend .icon;
+  color: var(--action);
+}
+.icon-action-shade {
+  @extend .icon;
+  color: var(--action-shade);
+}
+
+// #button-menu {
+//   position: absolute;
+//   z-index: 1;
+//   // border: none;
+//   border-radius: 50%;
+//   color: var(--action);
+//   background-color: color-mix(in srgb, var(--action) 50%, transparent);
+// }
+button.highlight {
+  color: var(--highlight);
+  border: solid 1px var(--highlight);
+  background-color: color-mix(in srgb, var(--highlight) 10%, transparent);
+}
+button:hover {
+  // color: var(--dominant);
+  // background-color: color-mix(in srgb, currentColor 33%, transparent);
+  // filter: drop-shadow(0 0 0.5em var(--action));
+  background-color: var(--action);
+}
+button:focus {
+  // filter: drop-shadow(0 0 0.1em var(--action));
+  background-color: color-mix(in srgb, currentColor 33%, transparent);
+}
+button:active {
+  // opacity: 0.7;
+  transform: scale(1.01);
+  // filter: drop-shadow(0 0 0.66em var(--action-glow));
+  background-color: color-mix(in srgb, currentColor 33%, transparent);
+}
+button:disabled {
+  // opacity: 0.3;
+  filter: grayscale(0.9);
+}
+button.action {
+  padding: 1em;
+  border: solid 1px var(--action);
+  color: var(--action);
+  font-size: 1.66rem !important;
+  filter: drop-shadow(0 0 0.05em var(--action));
+  background-color: #12121207;
+}
+button.selected {
+  color: var(--highlight);
+  background-color: var(--action);
+  filter: drop-shadow(0 0 0.1em var(--action-glow));
+}
+button.menu-button {
+  // padding: 1em 0;
+  padding: 0;
+  font-weight: 100;
+  // font-size: 1.66rem;
+  color: var(--action);
+  border: none;
+  background: none !important;
+}
+button.submenu {
+  padding: 0.33em 0.66em;
+  font-weight: 100;
+}
+
+//   .card button.button--icon {
+//     padding: 0.33rem;
+//     height: 1.99rem;
+//   }
+// >> Anchors
+a {
+  color: var(--action);
+  // filter: drop-shadow(0 0 0.05em var(--highlight-glow));
+  transition: opacity 0.2s ease-in;
+  // filter: drop-shadow(0 0 0.1em var(--highlight-shade));
+
+  font-weight: 700;
+  cursor: pointer;
+}
+a:hover {
+  // filter: drop-shadow(0 0 0.1em var(--highlight));
+  opacity: 0.7;
+}
+a:active {
+  opacity: 0.7;
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Pesto Stemar",
+    "vote": 8,
+    "price": "27,8 €",
+    "unit": "al Kg*",
+    "highlight": "Miglior rapporto qualità / prezzo",
+    "description": "Realizzato in un pastificio nei pressi di Genova, questo pesto si distingue per il suo ottimo sapore e un prezzo competitivo che lo rende ancora più apprezzabile."
+  },
+  {
+    "name": "Pesto Novella",
+    "vote": 9,
+    "price": "24,5 €",
+    "unit": "al Kg*",
+    "highlight": "Freschezza imbattibile",
+    "description": "Il pesto Novella, prodotto a Sori, nella Riviera di Levante, si caratterizza per il suo sapore eccellente e una freschezza ineguagliabile che lo rendono davvero unico."
+  },
+  {
+    "name": "Pesto di Pra",
+    "vote": 8,
+    "price": "31,5 €",
+    "unit": "al Kg*",
+    "highlight": "Buono ma costa.",
+    "description": "Pesto di Pra è prodotto con basilico coltivato direttamente a Pra, il luogo simbolo del basilico genovese. Il suo sapore è autentico e delizioso, ma il prezzo è leggermente elevato."
+  }
+]
