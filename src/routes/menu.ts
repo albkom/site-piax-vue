@@ -19,8 +19,8 @@ export const useMenuStore = defineStore('menu', () => {
     console.warn('Hiding menu')
     const menu = document.getElementById('menu')
     if (menu) {
-      menu.style.display = 'none'
       menu.style.transform = 'translateY(-100%)'
+      // menu.style.display = 'none'
       isOpen.value = false
     }
   }

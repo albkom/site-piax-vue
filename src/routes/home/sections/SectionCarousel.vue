@@ -21,7 +21,7 @@ import ImageLazy from '@/components/ImageLazy.vue'
 import { onMounted, ref, computed } from 'vue'
 
 const scroller = ref<HTMLElement | null>(null)
-const index = ref(0)
+const index = ref(1)
 const count = ref(0)
 const isTransitioning = ref(false)
 
@@ -30,16 +30,23 @@ const extendedImages = computed(() => {
   const originalImages = props.images
   if (originalImages.length === 0) return []
 
-  // Duplicate the first few images at the end for seamless infinite scroll
-  const duplicateCount = Math.min(2, originalImages.length)
-  const duplicates = originalImages.slice(0, duplicateCount)
+  // // Duplicate the first few images at the end for seamless infinite scroll
+  // const duplicateCount = Math.min(2, originalImages.length)
+  // const duplicates = originalImages.slice(0, duplicateCount)
 
-  return [...originalImages, ...duplicates]
+  return originalImages //[...originalImages, ...duplicates]
 })
 
 onMounted(() => {
   if (scroller.value) {
     count.value = props.images.length // Use original count for indicators
+
+    // Start at the first original image (after the duplicated one)
+    scroller.value.scrollTo({
+      left: scroller.value.clientWidth,
+      behavior: 'instant',
+    })
+
     // Listen for scroll end to handle infinite loop
     let scrollTimeout: number
     scroller.value.addEventListener('scroll', () => {
@@ -49,25 +56,30 @@ onMounted(() => {
   }
 })
 
+let isAdjusting = false
+
 function handleScrollEnd() {
+  if (isAdjusting) return
   if (isTransitioning.value || !scroller.value) return
 
   console.log('>>> scroll end')
   const scrollLeft = scroller.value.scrollLeft
   const itemWidth = scroller.value.clientWidth
-  const currentIndex = Math.round(scrollLeft / itemWidth)
+  const currentIndex = Math.round(scrollLeft / itemWidth) - 1 // Adjust for duplicated image
   const originalLength = props.images.length
+  console.log(originalLength, currentIndex)
 
   // If we're at a duplicated image, jump back to the original
   if (currentIndex >= originalLength) {
     isTransitioning.value = true
+    isAdjusting = true
     const targetIndex = currentIndex - originalLength
     index.value = targetIndex
 
     // Jump to the corresponding original image without animation
     try {
       scroller.value.scrollTo({
-        left: targetIndex * itemWidth,
+        left: (targetIndex + 1) * itemWidth, // +1 for the duplicated image at start
         behavior: 'instant' as ScrollBehavior,
       })
     } catch {
@@ -78,6 +90,29 @@ function handleScrollEnd() {
     // Reset the transition flag after a short delay
     setTimeout(() => {
       isTransitioning.value = false
+      isAdjusting = false
+    }, 50)
+  } else if (currentIndex < 0) {
+    isTransitioning.value = true
+    isAdjusting = true
+    const targetIndex = originalLength // Jump to last original image
+    index.value = targetIndex
+    console.log('Jump to last original image:', targetIndex)
+    // Jump to the corresponding original image without animation
+    try {
+      scroller.value.scrollTo({
+        left: targetIndex * itemWidth, // +1 for the duplicated image at start
+        behavior: 'instant' as ScrollBehavior,
+      })
+    } catch {
+      // Fallback for browsers that don't support 'instant'
+      scroller.value.scrollLeft = (targetIndex + 1) * itemWidth
+    }
+
+    // Reset the transition flag after a short delay
+    setTimeout(() => {
+      isTransitioning.value = false
+      isAdjusting = false
     }, 50)
   } else {
     index.value = currentIndex
@@ -87,26 +122,10 @@ function handleScrollEnd() {
 function scrollLeft() {
   if (!scroller.value || isTransitioning.value) return
 
-  if (index.value <= 0) {
-    // Jump to the last original image
-    isTransitioning.value = true
-    const lastIndex = props.images.length - 1
-    scroller.value.scrollTo({
-      left: lastIndex * scroller.value.clientWidth,
-      behavior: 'smooth',
-    })
-    index.value = lastIndex
-    isTransitioning.value = false
-    // setTimeout(() => {
-    //   isTransitioning.value = false
-    // }, 500)
-  } else {
-    scroller.value.scrollBy({
-      left: -scroller.value.clientWidth,
-      behavior: 'smooth',
-    })
-    index.value--
-  }
+  scroller.value.scrollBy({
+    left: -scroller.value.clientWidth,
+    behavior: 'smooth',
+  })
 }
 
 function scrollRight() {
@@ -116,14 +135,6 @@ function scrollRight() {
     left: scroller.value.clientWidth,
     behavior: 'smooth',
   })
-
-  // Don't update index here - let handleScrollEnd handle it
-  if (index.value < props.images.length - 1) {
-    index.value++
-  } else {
-    // We're moving to the first duplicated image
-    // The index will be reset by handleScrollEnd
-  }
 }
 </script>
 <template>
@@ -136,29 +147,29 @@ function scrollRight() {
         {{ description }}
       </span>
     </div>
-    <div ref="scroller" dir="ltr" class="scroll-container x-mandatory-scroll-snapping">
+    <div ref="scroller" dir="ltr" class="scroll-container x-mandatory-scroll-snapping slow-scroll">
       <div
         class="relative scroll-image flx-x"
-        v-for="(src, imgIndex) in extendedImages"
+        v-for="(src, imgIndex) in [images[images.length - 1], ...images, images[0]]"
         :key="`img-${imgIndex}`"
         :id="`imgs-${imgIndex}`"
       >
         <ImageLazy :img="src" ext="png" fit="scale-down" />
       </div>
     </div>
-    <div class="flx-x">
-      <div class="flx-x row between pad">
+    <div class="flx-x back-complement">
+      <div class="flx-x row between pad mb-2vh">
         <button class="" @click="scrollLeft()">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="2.5rem">
             <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
           </svg>
         </button>
-        <div class="flx pad ">
+        <div class="flx pad">
           <span style="text-wrap: wrap">{{ title }}</span>
-          <div class="flx-x row back-dark">
+          <div class="flx-x row">
             <small>{{ index + 1 }}</small>
             <span>/</span>
-            <small>{{ count + 1 }}</small>
+            <small>{{ count }}</small>
           </div>
         </div>
         <button class="" @click="scrollRight()">

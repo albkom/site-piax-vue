@@ -9,8 +9,9 @@ import { delay, logTaskEnd, logTaskStart, type Dictionary } from '@/common/utils
 
 import { palettes, type Palettes } from './utils/palettes'
 import AppConfig from '../default.settings'
-import { outroAnimation } from './layout/usePage'
+
 import { useWaitingStore } from './stores/waitingStore'
+import { useMenuStore } from '@/routes/menu'
 
 export const useCommonStore = defineStore('common', () => {
   // let outroAnimation: () => Promise<void> = async () => {}
@@ -20,6 +21,7 @@ export const useCommonStore = defineStore('common', () => {
   const isBusy = ref(false)
 
   const { showWait, hideWait } = useWaitingStore()
+  const { hideMenu } = useMenuStore()
 
   // App initialization
   async function init(callback: () => Promise<void>) {
@@ -71,19 +73,14 @@ export const useCommonStore = defineStore('common', () => {
   }
 
   function scrollToPosition(id: string) {
-    console.log(id)
     const section = document.getElementById(id)
     if (!section) return
     const rect = section.getBoundingClientRect()
     const top = rect.top + window.scrollY
-    const height = window.innerHeight
     window.scrollTo({ top: top, behavior: 'smooth' })
     hideMenu()
   }
 
-  function hideMenu() {
-    console.log("Hiding menu")
-  }
   /**
    * Load and apply the theme based on the given theme ID
    * @param themeId The ID of the theme to load

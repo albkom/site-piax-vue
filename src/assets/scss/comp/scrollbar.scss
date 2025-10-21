@@ -31,3 +31,9 @@
 .y-proximity-scroll-snapping {
   scroll-snap-type: y proximity;
 }
+
+.slow-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}

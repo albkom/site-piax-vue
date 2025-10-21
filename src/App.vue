@@ -3,19 +3,15 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import { RouterView } from 'vue-router'
 
 // @ Components
-import TheBackground from '@/components/TheBackground.vue'
-import TheHeader from './components/TheHeader.vue'
 import TheFooter from './components/TheFooter.vue'
 
 // @ Stores
 import { storeToRefs } from 'pinia'
 import { useCommonStore } from '@/common/common'
-const { init, goTo } = useCommonStore()
+const { init } = useCommonStore()
 const { isBusy } = storeToRefs(useCommonStore())
 
-import { useDbStore } from './routes/store'
-import { applyTheme } from './common/base/AppTheme'
-import { settings } from './default.settings'
+import TheMenu from './components/TheMenu.vue'
 
 const isReady = ref(false)
 onMounted(() => {
@@ -24,16 +20,13 @@ onMounted(() => {
   // *** App initialization ***
   init(async () => {
     console.log('>>> app callback')
-
-    // await loadPrices()
-
     isReady.value = true
   })
 })
 </script>
 
 <template>
-  <TheHeader />
+  <TheMenu />
   <RouterView v-if="!isBusy" />
   <TheFooter v-if="!isBusy" />
 </template>

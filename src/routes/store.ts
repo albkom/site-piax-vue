@@ -31,30 +31,30 @@ export const useDbStore = defineStore('db', () => {
       cover: 'Impianti/Impianti1',
       images: getImagesSrc('ILL'),
     },
-    // {
-    //   id: 'pavimenti',
-    //   title: 'Pavimenti e rivestimenti',
-    //   description:
-    //     'Posa di pavimenti in ceramica, gres porcellanato, marmo, cotto e rivestimenti a parete. Installazione e levigatura di parquet e laminati, per soluzioni durature e di grande impatto estetico.',
-    //   cover: 'Pavimenti/Pavimenti1',
-    //   images: getImagesSrc('Pavimenti'),
-    // },
-    // {
-    //   id: 'ristrutturazioni',
-    //   title: 'Ristrutturazioni e restauri',
-    //   description:
-    //     'Ristrutturazioni edili complete per appartamenti, ville e locali commerciali: opere murarie, demolizioni, nuove costruzioni, adeguamento sismico, riqualificazione energetica e rifacimento facciate.',
-    //   cover: 'Ristrutturazioni/Ristrutturazioni1',
-    //   images: getImagesSrc('Ristrutturazioni'),
-    // },
-    // {
-    //   id: 'salotti',
-    //   title: 'Salotti',
-    //   description:
-    //     'Ristrutturazione e riorganizzazione di salotti: creazione di nuove aperture, controsoffitti, posa pavimenti e rivestimenti, soluzioni illuminotecniche e finiture di pregio per un ambiente accogliente e moderno.',
-    //   cover: 'Salotti/Salotto1',
-    //   images: getImagesSrc('Salotti'),
-    // },
+    {
+      id: 'PAV',
+      title: 'Pavimenti e rivestimenti',
+      description:
+        'Posa di pavimenti in ceramica, gres porcellanato, marmo, cotto e rivestimenti a parete. Installazione e levigatura di parquet e laminati, per soluzioni durature e di grande impatto estetico.',
+      cover: 'Pavimenti/Pavimenti1',
+      images: getImagesSrc('PAV'),
+    },
+    {
+      id: 'RIS',
+      title: 'Ristrutturazioni e restauri',
+      description:
+        'Ristrutturazioni edili complete per appartamenti, ville e locali commerciali: opere murarie, demolizioni, nuove costruzioni, adeguamento sismico, riqualificazione energetica e rifacimento facciate.',
+      cover: 'Ristrutturazioni/Ristrutturazioni1',
+      images: getImagesSrc('RIS'),
+    },
+    {
+      id: 'SAL',
+      title: 'Salotti',
+      description:
+        'Ristrutturazione e riorganizzazione di salotti: creazione di nuove aperture, controsoffitti, posa pavimenti e rivestimenti, soluzioni illuminotecniche e finiture di pregio per un ambiente accogliente e moderno.',
+      cover: 'Salotti/Salotto1',
+      images: getImagesSrc('SAL'),
+    },
   ]
 
   function isMobileDevice(): boolean {

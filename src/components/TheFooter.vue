@@ -18,7 +18,7 @@ onMounted(() => {
     <!-- <div class="overlay gradient"></div> -->
     <div class="flx-x top left gap-m z-5">
       <hr class="h-10vh" />
-      <h5 class="text">Contatti</h5>
+      <h5 class="dominant">Contatti</h5>
       <!-- <p><a href="https://wa.me/393206345722" target="_blank">Scrivici su WhatsApp</a></p> -->
       <div class="flx-x row left gap-s">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-1rem" viewBox="0 -960 960 960">
@@ -108,9 +108,13 @@ onMounted(() => {
 
 <style scoped>
 #app-footer {
-  background-color: var(--dominant);
+  background-color: var(--darker);
+  color: var(--dominant);
   z-index: 20;
-  border-top: 5pt solid var(--dominant);
+  /* border-top: 5pt solid var(--dominant); */
+}
+svg {
+  fill: var(--dominant);
 }
 .gradient {
   background-image: linear-gradient(to bottom, var(--dominant) 0%, transparent 10%);

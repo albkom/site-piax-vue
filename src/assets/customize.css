@@ -14,9 +14,9 @@
 :root {
   --dominant: #aaaaaa;
   /* --dominant: hsl(24, 8%, 77%); */
-  --complement: #263238;
-  --action: #12bfde;
-  --highlight: #005969;
+  --complement: #707070;
+  --action: #ffffff;
+  --highlight: #149cf0;
   --text: #000000;
   /* --text: #020204; */
   --danger: #57a6a1;

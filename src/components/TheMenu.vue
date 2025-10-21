@@ -7,33 +7,37 @@ const { hideMenu } = useMenuStore()
 </script>
 
 <template>
-  <div id="menu" class="flx-x left top">
+  <div id="menu" class="flx-x left top back-complement">
     <div class="flx-x row between pad">
       <span class="txt--s">
         GG Impianti e Costruzioni Srl
       </span>
-      <button @click="hideMenu()">Chiudi</button>
+      <button class="" @click="hideMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 10.586l4.95-4.95 1.414 1.414L13.414 12l4.95 4.95-1.414 1.414L12 13.414l-4.95 4.95-1.414-1.414L10.586 12l-4.95-4.95 1.414-1.414L12 10.586z"/>
+        </svg>
+      </button>
     </div>
     <div class="flx left pad">
-      <span>Menu</span>
+      <!-- <span>Menu</span> -->
       <ul class="">
         <li class="txt--left">
-          <a href="#" @click="scrollToPosition('section-bagni')">Bagni</a>
+          <a href="#" @click.prevent="scrollToPosition('section-BAG')">Bagni</a>
         </li>
         <li class="txt--left">
-          <a href="#" @click="scrollToPosition('section-cucine')">Cucine</a>
+          <a href="#" @click.prevent="scrollToPosition('section-CUC')">Cucine</a>
         </li>
         <li class="txt--left">
-          <a href="#" @click="scrollToPosition('section-impianti')">Installazione impianti</a>
+          <a href="#" @click.prevent="scrollToPosition('section-ILL')">Illuminazioni</a>
         </li>
         <li class="txt--left">
-          <a href="#" @click="scrollToPosition('section-pavimenti')">Pavimenti e parquet</a>
+          <a href="#" @click.prevent="scrollToPosition('section-PAV')">Pavimenti e parquet</a>
         </li>
         <li class="txt--left">
-          <a href="#" @click="scrollToPosition('section-ristrutturazioni')">Ristrutturazioni</a>
+          <a href="#" @click.prevent="scrollToPosition('section-RIS')">Ristrutturazioni</a>
         </li>
         <li class="txt--left">
-          <a href="#" @click="scrollToPosition('section-salotti')">Salotti</a>
+          <a href="#" @click.prevent="scrollToPosition('section-SAL')">Salotti</a>
         </li>
       </ul>
     </div>
@@ -41,4 +45,15 @@ const { hideMenu } = useMenuStore()
 </template>
 
 <style scoped>
+#menu {
+  background-color: var(--light);
+  color: var(--dark);
+}
+#menu a {
+  color: var(--darker);
+  /* text-decoration: none; */
+}
+#menu {
+  transition: transform 0.3s ease-in-out;
+}
 </style>
