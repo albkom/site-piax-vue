@@ -5,9 +5,9 @@ export type ImageGroup = {
 };
 export const heros: ImageGroup = {
   "mobile": [
-    "heroMobile.jpg"
+    "heroMobile.png"
   ],
   "desktop": [
-    "heroDesktop.jpg"
+    "heroDesktop.png"
   ]
 };

@@ -8,53 +8,53 @@ export const useDbStore = defineStore('db', () => {
 
   const services = [
     {
-      id: 'bagni',
+      id: 'BAG',
       title: 'Bagni',
       description:
         'Ristrutturazione completa di bagni, dalla progettazione alla realizzazione: interventi idraulici, sostituzione sanitari, posa piastrelle, stuccatura, coibentazione, installazione box doccia, vasche idromassaggio e soluzioni su misura per persone con mobilità ridotta.',
       cover: 'Bagni/Bagno1',
-      images: getImagesSrc('Bagni'),
+      images: getImagesSrc('BAG'),
     },
     {
-      id: 'cucine',
+      id: 'CUC',
       title: 'Cucine',
       description:
         'Realizziamo cucine su misura e ristrutturazioni complete: opere murarie, impianti idraulici ed elettrici a norma, posa rivestimenti, tinteggiatura e finiture, per una cucina funzionale e di design.',
       cover: 'Cucine/Cucina1',
-      images: getImagesSrc('Cucine'),
+      images: getImagesSrc('CUC'),
     },
     {
-      id: 'impianti',
+      id: 'ILL',
       title: 'Illuminazioni',
       description:
         'Progettazione e installazione di impianti idraulici ed elettrici civili e industriali, oltre che impianti di condizionamento certificati e a norma di legge. Manutenzione, adeguamento e riparazioni per la massima sicurezza ed efficienza.',
       cover: 'Impianti/Impianti1',
-      images: getImagesSrc('Impianti'),
+      images: getImagesSrc('ILL'),
     },
-    {
-      id: 'pavimenti',
-      title: 'Pavimenti e rivestimenti',
-      description:
-        'Posa di pavimenti in ceramica, gres porcellanato, marmo, cotto e rivestimenti a parete. Installazione e levigatura di parquet e laminati, per soluzioni durature e di grande impatto estetico.',
-      cover: 'Pavimenti/Pavimenti1',
-      images: getImagesSrc('Pavimenti'),
-    },
-    {
-      id: 'ristrutturazioni',
-      title: 'Ristrutturazioni e restauri',
-      description:
-        'Ristrutturazioni edili complete per appartamenti, ville e locali commerciali: opere murarie, demolizioni, nuove costruzioni, adeguamento sismico, riqualificazione energetica e rifacimento facciate.',
-      cover: 'Ristrutturazioni/Ristrutturazioni1',
-      images: getImagesSrc('Ristrutturazioni'),
-    },
-    {
-      id: 'salotti',
-      title: 'Salotti',
-      description:
-        'Ristrutturazione e riorganizzazione di salotti: creazione di nuove aperture, controsoffitti, posa pavimenti e rivestimenti, soluzioni illuminotecniche e finiture di pregio per un ambiente accogliente e moderno.',
-      cover: 'Salotti/Salotto1',
-      images: getImagesSrc('Salotti'),
-    },
+    // {
+    //   id: 'pavimenti',
+    //   title: 'Pavimenti e rivestimenti',
+    //   description:
+    //     'Posa di pavimenti in ceramica, gres porcellanato, marmo, cotto e rivestimenti a parete. Installazione e levigatura di parquet e laminati, per soluzioni durature e di grande impatto estetico.',
+    //   cover: 'Pavimenti/Pavimenti1',
+    //   images: getImagesSrc('Pavimenti'),
+    // },
+    // {
+    //   id: 'ristrutturazioni',
+    //   title: 'Ristrutturazioni e restauri',
+    //   description:
+    //     'Ristrutturazioni edili complete per appartamenti, ville e locali commerciali: opere murarie, demolizioni, nuove costruzioni, adeguamento sismico, riqualificazione energetica e rifacimento facciate.',
+    //   cover: 'Ristrutturazioni/Ristrutturazioni1',
+    //   images: getImagesSrc('Ristrutturazioni'),
+    // },
+    // {
+    //   id: 'salotti',
+    //   title: 'Salotti',
+    //   description:
+    //     'Ristrutturazione e riorganizzazione di salotti: creazione di nuove aperture, controsoffitti, posa pavimenti e rivestimenti, soluzioni illuminotecniche e finiture di pregio per un ambiente accogliente e moderno.',
+    //   cover: 'Salotti/Salotto1',
+    //   images: getImagesSrc('Salotti'),
+    // },
   ]
 
   function isMobileDevice(): boolean {
@@ -71,6 +71,7 @@ export const useDbStore = defineStore('db', () => {
   }
 
   function getImagesSrc(category: string) {
+    console.log('Getting images for category:', category)
     // Detect if screen width is less than or equal to 769px
     const isPortrait = typeof window !== 'undefined' && window.innerWidth <= 769
     const srcs: string[] = images[category][isPortrait ? 'mobile' : 'desktop']

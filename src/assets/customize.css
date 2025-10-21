@@ -12,15 +12,23 @@
 }
 
 :root {
-  --dominant: #030e0a;
+  --dominant: #aaaaaa;
   /* --dominant: hsl(24, 8%, 77%); */
-  --complement: #022d1e;
-  --action: #033a31;
-  --highlight: #bbefd6;
-  --text: #c7c4d9;
+  --complement: #263238;
+  --action: #12bfde;
+  --highlight: #005969;
+  --text: #000000;
   /* --text: #020204; */
   --danger: #57a6a1;
   --alt: #f4c430;
+}
+
+/* FIX */
+.txt--m {
+  line-height: inherit;
+}
+h2 {
+  font-weight: normal;
 }
 
 #header {

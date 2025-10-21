@@ -19,7 +19,7 @@ import { settings } from './default.settings'
 
 const isReady = ref(false)
 onMounted(() => {
-  applyTheme(settings.palette)
+  // applyTheme(settings.palette)
 
   // *** App initialization ***
   init(async () => {

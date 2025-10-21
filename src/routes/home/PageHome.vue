@@ -35,7 +35,7 @@ onMounted(() => {
       <!-- To compensate fixed -->
     </div>
     <BubbleOverlay class="z-5" />
-    <div class="flx-x top">
+    <div class="flx-x top back-dark">
       <SectionCarousel
         v-for="service in services"
         :key="service.id"

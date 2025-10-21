@@ -71,6 +71,7 @@ export const useCommonStore = defineStore('common', () => {
   }
 
   function scrollToPosition(id: string) {
+    console.log(id)
     const section = document.getElementById(id)
     if (!section) return
     const rect = section.getBoundingClientRect()
@@ -113,9 +114,9 @@ export const useCommonStore = defineStore('common', () => {
   function getImageUrl(name: string, ext?: string) {
     // For images in the public folder, use the base path directly
     if (name.endsWith(`.${ext}`)) {
-      return `/img/${name}`
+      return `/FOT/${name}`
     }
-    return `/img/${name}.${ext ? ext : 'jpg'}`
+    return `/FOT/${name}.${ext ? ext : 'jpg'}`
   }
 
   return {

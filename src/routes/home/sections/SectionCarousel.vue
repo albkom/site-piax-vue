@@ -1,9 +1,6 @@
 <script setup lang="ts">
-// @ Stores
-import { useCommonStore } from '@/common/common'
-const { goTo } = useCommonStore()
-
-defineProps({
+import CarouselCounter from './CarouselCounter.vue'
+const props = defineProps({
   title: {
     type: String,
     default: 'Bagni',
@@ -21,112 +18,156 @@ defineProps({
 // @ Components
 import ImageLazy from '@/components/ImageLazy.vue'
 
-// import { animate, scroll } from 'motion'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 
 const scroller = ref<HTMLElement | null>(null)
-const progress = ref<HTMLElement | null>(null)
+const index = ref(0)
+const count = ref(0)
+const isTransitioning = ref(false)
+
+// Create an extended array with duplicated images for infinite scrolling
+const extendedImages = computed(() => {
+  const originalImages = props.images
+  if (originalImages.length === 0) return []
+
+  // Duplicate the first few images at the end for seamless infinite scroll
+  const duplicateCount = Math.min(2, originalImages.length)
+  const duplicates = originalImages.slice(0, duplicateCount)
+
+  return [...originalImages, ...duplicates]
+})
 
 onMounted(() => {
-  if (scroller.value && progress.value) {
-    // scroll(animate(progress.value, { scaleX: [0.1, 1] }, { ease: 'linear' }), {
-    //   container: scroller.value as HTMLElement,
-    //   axis: 'x',
-    // })
-    // scroll(
-    //   (p: number) => {
-    //     if (scroller.value) {
-    //       scroller.value.querySelectorAll('.button-scroll.scroll-backward').forEach((item) => {
-    //         ;(item as HTMLButtonElement).disabled = p <= 0
-    //         ;(item as HTMLButtonElement).style.opacity = p <= 0 ? '0.5' : '1'
-    //       })
-    //       scroller.value.querySelectorAll('.button-scroll.scroll-forward').forEach((item) => {
-    //         ;(item as HTMLButtonElement).disabled = p >= 1.0
-    //         ;(item as HTMLButtonElement).style.opacity = p >= 1.0 ? '0.5' : '1'
-    //       })
-    //     }
-    //   },
-    //   {
-    //     container: scroller.value as HTMLElement,
-    //     axis: 'x',
-    //   },
-    // )
+  if (scroller.value) {
+    count.value = props.images.length // Use original count for indicators
+    // Listen for scroll end to handle infinite loop
+    let scrollTimeout: number
+    scroller.value.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout)
+      scrollTimeout = setTimeout(handleScrollEnd, 50)
+    })
   }
 })
 
+function handleScrollEnd() {
+  if (isTransitioning.value || !scroller.value) return
+
+  console.log('>>> scroll end')
+  const scrollLeft = scroller.value.scrollLeft
+  const itemWidth = scroller.value.clientWidth
+  const currentIndex = Math.round(scrollLeft / itemWidth)
+  const originalLength = props.images.length
+
+  // If we're at a duplicated image, jump back to the original
+  if (currentIndex >= originalLength) {
+    isTransitioning.value = true
+    const targetIndex = currentIndex - originalLength
+    index.value = targetIndex
+
+    // Jump to the corresponding original image without animation
+    try {
+      scroller.value.scrollTo({
+        left: targetIndex * itemWidth,
+        behavior: 'instant' as ScrollBehavior,
+      })
+    } catch {
+      // Fallback for browsers that don't support 'instant'
+      scroller.value.scrollLeft = targetIndex * itemWidth
+    }
+
+    // Reset the transition flag after a short delay
+    setTimeout(() => {
+      isTransitioning.value = false
+    }, 50)
+  } else {
+    index.value = currentIndex
+  }
+}
+
 function scrollLeft() {
-  if (scroller.value) {
+  if (!scroller.value || isTransitioning.value) return
+
+  if (index.value <= 0) {
+    // Jump to the last original image
+    isTransitioning.value = true
+    const lastIndex = props.images.length - 1
+    scroller.value.scrollTo({
+      left: lastIndex * scroller.value.clientWidth,
+      behavior: 'smooth',
+    })
+    index.value = lastIndex
+    isTransitioning.value = false
+    // setTimeout(() => {
+    //   isTransitioning.value = false
+    // }, 500)
+  } else {
     scroller.value.scrollBy({
       left: -scroller.value.clientWidth,
       behavior: 'smooth',
     })
+    index.value--
   }
 }
+
 function scrollRight() {
-  console.log('scrollRight')
-  if (scroller.value) {
-    scroller.value.scrollBy({
-      left: scroller.value.clientWidth,
-      behavior: 'smooth',
-    })
+  if (!scroller.value || isTransitioning.value) return
+
+  scroller.value.scrollBy({
+    left: scroller.value.clientWidth,
+    behavior: 'smooth',
+  })
+
+  // Don't update index here - let handleScrollEnd handle it
+  if (index.value < props.images.length - 1) {
+    index.value++
+  } else {
+    // We're moving to the first duplicated image
+    // The index will be reset by handleScrollEnd
   }
 }
 </script>
 <template>
-  <section class="relative flx-x h-100vh">
+  <section class="relative flx-x back-dark">
+    <div class="flx-x left pad back-dominant">
+      <h4 class="txt--l mt-2vh">
+        {{ title }}
+      </h4>
+      <span class="txt--m txt--left mt-2vh mb-3vh">
+        {{ description }}
+      </span>
+    </div>
     <div ref="scroller" dir="ltr" class="scroll-container x-mandatory-scroll-snapping">
       <div
-        class="relative scroll-image h-100vh flx-x"
-        style="background-color: var(--light)"
-        v-for="(src, index) in images"
-        :key="index"
-        :id="`imgs-${index}`"
+        class="relative scroll-image flx-x"
+        v-for="(src, imgIndex) in extendedImages"
+        :key="`img-${imgIndex}`"
+        :id="`imgs-${imgIndex}`"
       >
-        <div v-if="index == 0" class="absolute flx-x pad gradient">
-          <!-- <hr class="h-10vh" /> -->
-          <hr class="h-3rem" />
-          <p class="txt--m">
-            {{ description }}
-          </p>
+        <ImageLazy :img="src" ext="png" fit="scale-down" />
+      </div>
+    </div>
+    <div class="flx-x">
+      <div class="flx-x row between pad">
+        <button class="" @click="scrollLeft()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="2.5rem">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+          </svg>
+        </button>
+        <div class="flx pad ">
+          <span style="text-wrap: wrap">{{ title }}</span>
+          <div class="flx-x row back-dark">
+            <small>{{ index + 1 }}</small>
+            <span>/</span>
+            <small>{{ count + 1 }}</small>
+          </div>
         </div>
-        <ImageLazy :img="src" ext="jpg" fit="cover" />
-      </div>
-    </div>
-    <div class="absolute flx-xy bottom">
-      <div class="flx-x h-50vh row between">
-        <button class="button-scroll scroll-backward big" @click="scrollLeft()">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-            <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
-          </svg>
-        </button>
-        <button class="button-scroll scroll-forward big" @click="scrollRight()">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-            <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+        <button class="" @click="scrollRight()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="2.5rem">
+            <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
           </svg>
         </button>
       </div>
-    </div>
-    <!-- <div class="overlay gradient z-4"></div> -->
-    <div class="scroller-header absolute z-2 flx-x row pad" style="bottom: auto; top: 0">
-      <!-- <hr class="h-10vh" /> -->
-      <div class="flx stretch left">
-        <div ref="progress" class="scroll-progress"></div>
-        <h3 class="txt--left left">{{ title }}</h3>
-      </div>
-      <!-- <div class="only--mobile flx">
-        <button class="button-scroll scroll-backward" @click="scrollLeft()">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-            <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
-          </svg>
-        </button>
-      </div>
-      <div class="only--mobile flx">
-        <button class="button-scroll scroll-forward" @click="scrollRight()">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-            <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
-          </svg>
-        </button>
-      </div> -->
+      <!-- <CarouselCounter :count="count" v-model:index="index" /> -->
     </div>
   </section>
 </template>
@@ -138,25 +179,14 @@ function scrollRight() {
   color: var(--action);
   background-color: var(--dominant);
 }
-.button-scroll {
-  background-color: transparent;
-  border: none;
-  color: var(--action);
+button {
   padding: 0;
 }
-.button-scroll svg {
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: currentColor;
-  stroke-width: 20pt;
-  stroke: var(--lighter);
+button svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: var(--action);
 }
-.button-scroll.big svg {
-  width: 4rem;
-  height: 4rem;
-  color: var(--action);
-}
-
 .scroll-container {
   width: 100%;
   height: 100%;
@@ -171,6 +201,7 @@ function scrollRight() {
   vertical-align: top;
   scroll-snap-type: x mandatory; /* Add mandatory x snapping */
   /* border-top: 5pt solid var(--dark); */
+  background-color: var(--dark);
 }
 .scroll-container::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
@@ -179,11 +210,12 @@ function scrollRight() {
   border: none;
 }
 .scroll-image {
-  display: block;
+  display: flex;
   flex: none;
   scroll-snap-align: start; /* Snap each image to start */
-  border-right: 5pt solid var(--dominant);
+  /* border-right: 5pt solid var(--dominant); */
   box-sizing: border-box;
+  margin: auto;
 }
 .scroll-progress {
   bottom: 0;

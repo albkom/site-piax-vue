@@ -14,21 +14,40 @@ const { hero } = useDbStore()
 
 <template>
   <div class="flx-x max--width h-100vh compensate-header">
-    <div class="absolute top flx-xy z-0">
-      <ImageLazy :img="hero" ext="jpg" fit="cover" />
+    <div class="absolute top flx-xy z-0" style="filter: contrast(50%)">
+      <ImageLazy img="SAL/SAL_105" ext="png" fit="cover" />
     </div>
     <div class="flx-x z-1">
-      <div class="flx-x">
+      <!-- <div class="flx-x font-header">
+        <div class="flx-x row txt--xxl">
+          <div>G</div>
+          <div style="transform: scaleX(-1)">G</div>
+        </div>
+        <div class="flx-x txt--l">Impianti e Costruzioni</div>
+      </div> -->
+      <div class="flx-x glow-dark">
         <img src="@/assets/logo.svg" class="flx-x h-20vh" alt="" />
       </div>
+      <span class="txt--l pad fw-700 glow-dark">La tua impresa edile di fiducia a Genova</span>
       <hr class="h-10vh" />
-      <button
-        @click.prevent="scrollToPosition('section-bagni')"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 800">
-          <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
-        </svg>
-      </button>
+      <div class="flx-x">
+        <span>Scorri per <small class="txt--m">scoprire di più</small></span>
+        <div class="h-2rem w-2rem deg-180">
+          <!-- @click="scrollToPosition('section-BAG')" -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 800">
+            <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- <button @click.prevent="scrollToPosition('section-bagni')">
+        <div class="flx-x">
+          <span>Guarda i nostri lavori</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 800">
+            <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+          </svg>
+        </div>
+      </button> -->
     </div>
   </div>
 </template>

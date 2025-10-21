@@ -45,3 +45,5 @@ firebase.json
 
 pnpm-lock.yaml
 package-lock.json
+
+/public/FOT/*

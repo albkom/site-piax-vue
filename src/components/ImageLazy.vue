@@ -25,7 +25,7 @@ const props = defineProps({
     draggable="false"
     @contextmenu.prevent
     style="pointer-events: none"
-    :class="fit === 'contain' ? 'contain' : ''"
+    :class="fit"
     :src="getImageUrl(img, ext)"
     alt="Image"
   />
@@ -42,6 +42,13 @@ const props = defineProps({
   width: auto;
   height: 100vh;
   object-fit: contain;
+  object-position: center;
+}
+.scale-down {
+  width: 100%;
+  height: auto;
+  /* height: 100vh; */
+  object-fit: scale-down;
   object-position: center;
 }
 </style>
