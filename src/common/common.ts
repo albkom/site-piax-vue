@@ -108,14 +108,6 @@ export const useCommonStore = defineStore('common', () => {
     return
   }
 
-  function getImageUrl(name: string, ext?: string) {
-    // For images in the public folder, use the base path directly
-    if (name.endsWith(`.${ext}`)) {
-      return `/FOT/${name}`
-    }
-    return `/FOT/${name}.${ext ? ext : 'jpg'}`
-  }
-
   return {
     init,
     themes,
@@ -124,6 +116,5 @@ export const useCommonStore = defineStore('common', () => {
     scrollToPosition,
     switchTheme,
     settings,
-    getImageUrl,
   }
 })

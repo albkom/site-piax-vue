@@ -1,7 +1,5 @@
 <script setup lang="ts">
-// @ Stores
-import { useCommonStore } from '@/common/common'
-const { getImageUrl } = useCommonStore()
+import { getImageUrl } from '@/common/utils/images'
 
 const props = defineProps({
   img: {

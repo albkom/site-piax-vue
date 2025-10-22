@@ -1,11 +1,10 @@
+import { isPortrait } from '@/common/utils/images'
 import { heros } from '@/db/db.heros'
 import { images, type ImageGroup } from '@/db/db.images'
 import { defineStore } from 'pinia'
 import { onMounted, ref } from 'vue'
 
 export const useDbStore = defineStore('db', () => {
-  const hero: string = getHeroSrc()
-
   const services = [
     {
       id: 'BAG',
@@ -73,16 +72,9 @@ export const useDbStore = defineStore('db', () => {
   function getImagesSrc(category: string) {
     console.log('Getting images for category:', category)
     // Detect if screen width is less than or equal to 769px
-    const isPortrait = typeof window !== 'undefined' && window.innerWidth <= 769
-    const srcs: string[] = images[category][isPortrait ? 'mobile' : 'desktop']
+    const srcs: string[] = images[category][isPortrait() ? 'mobile' : 'desktop']
     return srcs
     // return Array.from({ length: max }, (_, i) => `${file}${i + 1}`)
-  }
-
-  function getHeroSrc() {
-    const isPortrait = typeof window !== 'undefined' && window.innerWidth <= 769
-    console.log(heros[isPortrait ? 'mobile' : 'desktop'])
-    return heros[isPortrait ? 'mobile' : 'desktop'][0]
   }
 
   function updateServiceImages() {
@@ -104,30 +96,9 @@ export const useDbStore = defineStore('db', () => {
     progress.value = p
   }
 
-  const sections: HTMLElement[] = []
-  onMounted(() => {
-    // const sectionIds = [...images.value.map((_, i) => `img-${i}`)]
-    // sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[]
-  })
-
-  function getElementsByY(elements: HTMLElement[], y: number) {
-    for (let i = 0; i < elements.length; i++) {
-      const rect = elements[i].getBoundingClientRect()
-      if (rect.top <= y && rect.bottom > y) {
-        return elements[i]
-      }
-    }
-  }
-
-  async function reloadData() {
-    // await loadRecipes()
-    // await loadAuthors()
-  }
-
   return {
     progress,
     updateProgress,
-    hero,
     services,
   }
 })

@@ -1,21 +1,20 @@
 <script setup lang="ts">
-// # Section
-import { useSection } from '@/common/layout/useSection'
-// import { fadeIn, rollIn, clipIn, slideInFromBottom } from '@/common/motions'
+import { isPortrait } from '@/common/utils/images';
 import ImageLazy from '@/components/ImageLazy.vue'
-// import { fadeIn, rollIn, clipIn, slideInFromBottom } from '@/common/motions'
+import { onMounted, ref } from 'vue';
 
-import { useCommonStore } from '@/common/common'
-const { scrollToPosition } = useCommonStore()
+const heroSrc = ref<string>('');
+onMounted(() => {
+  const data = 'SAL/SAL_105';
+  heroSrc.value = `${isPortrait() ? 'mobile' : 'desktop'}/${data}`;
+});
 
-import { useDbStore } from '@/routes/store'
-const { hero } = useDbStore()
 </script>
 
 <template>
   <div class="flx-x max--width h-100vh compensate-header">
     <div class="absolute top flx-xy z-0" style="filter: contrast(75%)">
-      <ImageLazy img="SAL/SAL_105" ext="png" fit="cover" />
+      <ImageLazy :img="heroSrc" ext="png" fit="cover" />
     </div>
     <div class="flx-x z-1">
       <!-- <div class="flx-x font-header">

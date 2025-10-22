@@ -51,3 +51,7 @@ firebase deploy --only hosting:2brutto
 
 # fix vue prop type warnings
 https://github.com/orgs/vuejs/discussions/9964
+
+# IMAGES
+
+Images in public/img are not versioned, they need to be added before deploying
