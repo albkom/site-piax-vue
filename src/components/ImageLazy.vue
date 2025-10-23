@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { getImageUrl } from '@/common/utils/images'
+import { onMounted, ref } from 'vue'
 
 const props = defineProps({
   img: {
@@ -15,16 +16,31 @@ const props = defineProps({
     default: 'cover',
   },
 })
+
+const image = ref<HTMLImageElement | null>(null)
+onMounted(() => {
+  // console.log('ImageLazy mounted with img:', props.img);
+  // const imgElement = document.createElement('img');
+  // image.value = imgElement;
+  // if (image.value) {
+  //   image.value.src = getImageUrl(props.img, props.ext)
+  //   image.value.onload = () => {
+  //     // console.log('Image loaded:', image.value.src);
+  //   }
+  // }
+})
 </script>
 
 <template>
   <img
+    ref="image"
     class="image-section-background"
     draggable="false"
     @contextmenu.prevent
     style="pointer-events: none"
     :class="fit"
     :src="getImageUrl(img, ext)"
+    loading="lazy"
     alt="Image"
   />
 </template>

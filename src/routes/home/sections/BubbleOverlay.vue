@@ -23,12 +23,12 @@ onMounted(() => {
   <div style="position: fixed; right: 0; z-index: 20;" class="flx bottom pad">
     <!-- <div class="overlay gradient"></div> -->
     <div class="flx-x bottom right gap-m" style="align-items: end">
-      <button class="button--icon z-5" @click="toggleMenu">
+      <button class="button--icon z-5" @click="toggleMenu" aria-label="Apri menu">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
           <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
         </svg>
       </button>
-      <a id="cta" href="https://wa.me/393206345722" target="_blank" class="button--icon z-5">
+      <a id="cta" href="https://wa.me/393206345722" target="_blank" class="button--icon z-5" aria-label="Contattaci su WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 175.216 175.552">
           <defs>
             <linearGradient

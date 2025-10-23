@@ -84,7 +84,7 @@ function hexToRgb(hex: string): { r: number; g: number; b: number } | null {
     return {
       r: (bigint >> 16) & 255,
       g: (bigint >> 8) & 255,
-      b: bigint & 255
+      b: bigint & 255,
     }
   }
 
@@ -163,4 +163,11 @@ export function formatDateTime(date: string) {
     minute: 'numeric',
     second: 'numeric',
   })
+}
+
+export function isMobileDevice(): boolean {
+  return (
+    typeof window !== 'undefined' &&
+    /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent)
+  )
 }

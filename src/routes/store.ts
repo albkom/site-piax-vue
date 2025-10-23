@@ -1,8 +1,7 @@
 import { isPortrait } from '@/common/utils/images'
-import { heros } from '@/db/db.heros'
-import { images, type ImageGroup } from '@/db/db.images'
+import { images } from '@/db/db.images'
 import { defineStore } from 'pinia'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 
 export const useDbStore = defineStore('db', () => {
   const services = [
@@ -55,15 +54,6 @@ export const useDbStore = defineStore('db', () => {
       images: getImagesSrc('SAL'),
     },
   ]
-
-  function isMobileDevice(): boolean {
-    return (
-      typeof window !== 'undefined' &&
-      /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        window.navigator.userAgent,
-      )
-    )
-  }
 
   function createImageArray(prefix: string, n: number) {
     return Array.from({ length: n }, (_, i) => `${prefix}${i + 1}`)

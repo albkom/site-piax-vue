@@ -18,26 +18,34 @@ const props = defineProps({
 // @ Components
 import ImageLazy from '@/components/ImageLazy.vue'
 
-import { onMounted, ref, computed } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const scroller = ref<HTMLElement | null>(null)
 const index = ref(1)
 const count = ref(0)
 const isTransitioning = ref(false)
 
-// Create an extended array with duplicated images for infinite scrolling
-const extendedImages = computed(() => {
-  const originalImages = props.images
-  if (originalImages.length === 0) return []
+// Intersection Observer for lazy loading
+const sectionRef = ref<HTMLElement | null>(null)
+const isInViewport = ref(false)
 
-  // // Duplicate the first few images at the end for seamless infinite scroll
-  // const duplicateCount = Math.min(2, originalImages.length)
-  // const duplicates = originalImages.slice(0, duplicateCount)
-
-  return originalImages //[...originalImages, ...duplicates]
-})
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        isInViewport.value = true
+        count.value = props.images.length // Use original count for indicators
+        observer.disconnect() // Stop observing once loaded
+      }
+    })
+  },
+  { threshold: 0.1 }
+)
 
 onMounted(() => {
+  if (sectionRef.value) {
+    observer.observe(sectionRef.value)
+  }
   if (scroller.value) {
     count.value = props.images.length // Use original count for indicators
 
@@ -138,7 +146,7 @@ function scrollRight() {
 }
 </script>
 <template>
-  <section class="relative flx-x back-dark">
+  <section ref="sectionRef" class="relative flx-x back-dark">
     <div class="flx-x left pad back-dominant">
       <h4 class="txt--l mt-2vh">
         {{ title }}
@@ -147,7 +155,8 @@ function scrollRight() {
         {{ description }}
       </span>
     </div>
-    <div ref="scroller" dir="ltr" class="scroll-container x-mandatory-scroll-snapping slow-scroll">
+    <div ref="scroller" dir="ltr" class="scroll-container x-mandatory-scroll-snapping slow-scroll"
+     v-if="isInViewport">
       <div
         class="relative scroll-image flx-x"
         v-for="(src, imgIndex) in [images[images.length - 1], ...images, images[0]]"
@@ -159,7 +168,7 @@ function scrollRight() {
     </div>
     <div class="flx-x back-complement">
       <div class="flx-x row between pad mb-2vh">
-        <button class="" @click="scrollLeft()">
+        <button class="" @click="scrollLeft()" aria-label="Scroll left">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="2.5rem">
             <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
           </svg>
@@ -172,7 +181,7 @@ function scrollRight() {
             <small>{{ count }}</small>
           </div>
         </div>
-        <button class="" @click="scrollRight()">
+        <button class="" @click="scrollRight()" aria-label="Scroll right">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="2.5rem">
             <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
           </svg>
