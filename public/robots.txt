@@ -1,0 +1,23 @@
+# robots.txt for site-piax-vue
+# This file tells search engine crawlers which pages or files the crawler can or can't request from your site.
+
+User-agent: *
+Allow: /
+
+# Disallow certain directories if needed (uncomment and modify as necessary)
+# Disallow: /admin/
+# Disallow: /private/
+# Disallow: /*.pdf$
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Add your sitemap URL here when you have one
+# Sitemap: https://yourwebsite.com/sitemap.xml
