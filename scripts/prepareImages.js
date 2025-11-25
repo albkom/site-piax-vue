@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 const dir = './public/img'
-const outputFile = './src/db/db.images.ts'
+const outputFile = './src/stores/auto-generated/db.images.ts'
 // const publicDir = './public/img'
 
 function getAllFiles(dirPath, arrayOfFiles = []) {

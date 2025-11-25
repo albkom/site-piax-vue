@@ -1,0 +1,54 @@
+<script setup lang="ts">
+import { useNavigationStore } from '@/stores/navigation'
+import { isPortrait } from '@/common/utils/images'
+import ImageLazy from '@/components/ImageLazy.vue'
+import { onMounted, ref } from 'vue'
+const { scrollToPosition } = useNavigationStore()
+
+const heroSrc = ref<string>('')
+onMounted(() => {
+  const data = 'SAL/SAL_9'
+  heroSrc.value = `${isPortrait() ? 'mobile' : 'desktop'}/${data}`
+})
+</script>
+
+<template>
+  <div class="flx-x max--width h-100vh compensate-header">
+    <div class="absolute top flx-xy z-0" style="filter: contrast(50%)">
+      <ImageLazy :img="heroSrc" ext="png" fit="cover" />
+    </div>
+    <div class="flx-x z-1">
+      <!-- <div class="flx-x font-header">
+        <div class="flx-x row txt--xxl">
+          <div>G</div>
+          <div style="transform: scaleX(-1)">G</div>
+        </div>
+        <div class="flx-x txt--l">Impianti e Costruzioni</div>
+      </div> -->
+      <div class="flx-x glow-light glow--l">
+        <img src="@/assets/logo.svg" class="flx-x h-20vh" alt="" />
+      </div>
+      <span class="txt--l pad fw-700 glow-light glow--l"
+        >La tua impresa edile di fiducia a Genova</span
+      >
+      <hr class="h-10vh" />
+      <div class="flx-x">
+        <span class="mb-1vh">Scorri per <small class="txt--m">scoprire di più</small></span>
+        <button class="icon pad--zero" @click="scrollToPosition('section-BAG')">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-2rem w-2rem" viewBox="0 -960 960 800">
+            <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- <button @click.prevent="scrollToPosition('section-bagni')">
+        <div class="flx-x">
+          <span>Guarda i nostri lavori</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 800">
+            <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+          </svg>
+        </div>
+      </button> -->
+    </div>
+  </div>
+</template>

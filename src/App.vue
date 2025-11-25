@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { RouterView } from 'vue-router'
 
 // @ Components
@@ -7,16 +7,14 @@ import TheFooter from './components/TheFooter.vue'
 
 // @ Stores
 import { storeToRefs } from 'pinia'
-import { useCommonStore } from '@/common/common'
-const { init } = useCommonStore()
-const { isBusy } = storeToRefs(useCommonStore())
+import { useNavigationStore } from '@/stores/navigation'
+const { init } = useNavigationStore()
+const { isBusy } = storeToRefs(useNavigationStore())
 
 import TheMenu from './components/TheMenu.vue'
 
 const isReady = ref(false)
 onMounted(() => {
-  // applyTheme(settings.palette)
-
   // *** App initialization ***
   init(async () => {
     console.log('>>> app callback')

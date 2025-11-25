@@ -3,8 +3,6 @@
 import 'itagoglow/itagoglow.min.css'
 import '@/assets/customize.css'
 
-import { settings } from '@/default.settings'
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
@@ -24,8 +22,6 @@ app
 
 app.mount('#app')
 
-app.config.globalProperties.$settings = settings
-
 // ## 3d plugin
 // app.use(irationPlugin, {})
 
@@ -38,15 +34,15 @@ app.config.globalProperties.$settings = settings
 // Offline mode - service worker responding with cached responses
 // Client -> Service Worker -> Cache
 
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register('/service-worker.js', { scope: '/' })
-      .then((registration) => {
-        console.log('Service Worker registered:', registration.scope)
-      })
-      .catch((error) => {
-        console.log('Service Worker registration failed:', error)
-      })
-  })
-}
+// if ('serviceWorker' in navigator) {
+//   window.addEventListener('load', () => {
+//     navigator.serviceWorker
+//       .register('/service-worker.js', { scope: '/' })
+//       .then((registration) => {
+//         console.log('Service Worker registered:', registration.scope)
+//       })
+//       .catch((error) => {
+//         console.log('Service Worker registration failed:', error)
+//       })
+//   })
+// }
