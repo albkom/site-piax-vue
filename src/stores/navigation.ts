@@ -62,17 +62,10 @@ export const useNavigationStore = defineStore('navigation', () => {
     hideMenu()
   }
 
-  const areTextsHidden = ref(false);
-  function toggleTexts() {
-    areTextsHidden.value = !areTextsHidden.value;
-  }
-
   return {
     init,
     isBusy,
     goTo,
     scrollToPosition,
-    areTextsHidden,
-    toggleTexts,
   }
 })

@@ -9,17 +9,19 @@
   --main-pad: 0 0rem;
   --header-pad: 0 1.5rem;
   --header-h: 20vh;
+
+  --button-transparency: 0%;
 }
 
 :root {
-  --dominant: #aaaaaa;
+  --dominant: #e9ecef;
   /* --dominant: hsl(24, 8%, 77%); */
-  --complement: #707070;
-  --action: #ffffff;
+  --complement: #adb5bd;
+  --action: #f8f9fa;
   --highlight: #149cf0;
   --text: #000000;
   /* --text: #020204; */
-  --danger: #57a6a1;
+  --danger: #c12e2e;
   --alt: #f4c430;
 }
 
@@ -30,7 +32,9 @@
 h2 {
   font-weight: normal;
 }
-
+button {
+  border-radius: 0.5rem;
+}
 #header {
   left: auto !important;
   right: auto !important;

@@ -17,6 +17,8 @@ const props = defineProps({
   },
 })
 
+const isLoaded = ref(false)
+
 const image = ref<HTMLImageElement | null>(null)
 onMounted(() => {
   // console.log('ImageLazy mounted with img:', props.img);
@@ -29,6 +31,13 @@ onMounted(() => {
   //   }
   // }
 })
+
+function handleImageLoad() {
+  isLoaded.value = true
+  console.log('ImageLazy loaded:', props.img)
+  if (image.value)
+    image.value.style.opacity = '1'
+}
 </script>
 
 <template>
@@ -41,6 +50,7 @@ onMounted(() => {
     :class="fit"
     :src="getImageUrl(img, ext)"
     loading="lazy"
+    @load="handleImageLoad"
     alt="Image"
   />
 </template>
@@ -49,8 +59,13 @@ onMounted(() => {
 .image-section-background {
   width: 100vw;
   height: 100%;
+  aspect-ratio: 0.75;
   object-fit: cover;
   object-position: center;
+
+  background-color: var(--dominant);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 .contain {
   width: auto;

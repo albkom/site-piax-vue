@@ -5,17 +5,17 @@ export const useMenuStore = defineStore('menu', () => {
   const isOpen = ref(false)
 
   async function showMenu() {
-    console.warn('Showing menu')
+    // console.warn('Showing menu')
     const menu = document.getElementById('menu')
     if (menu) {
-      menu.style.display = 'flex'
+      // menu.style.display = 'flex'
       menu.style.transform = 'translateY(0%)'
       isOpen.value = true
     }
   }
 
   async function hideMenu() {
-    console.warn('Hiding menu')
+    // console.warn('Hiding menu')
     const menu = document.getElementById('menu')
     if (menu) {
       menu.style.transform = 'translateY(-100%)'

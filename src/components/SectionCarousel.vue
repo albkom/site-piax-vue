@@ -20,8 +20,8 @@ import ImageLazy from '@/components/ImageLazy.vue'
 import { onMounted, ref, watch } from 'vue'
 
 import { storeToRefs } from 'pinia'
-import { useNavigationStore } from '@/stores/navigation'
-const { areTextsHidden } = storeToRefs(useNavigationStore())
+import { useContentsStore } from '@/stores/contents'
+const { areTextsHidden } = storeToRefs(useContentsStore())
 
 const scroller = ref<HTMLElement | null>(null)
 const index = ref(1)
@@ -163,7 +163,7 @@ function scrollRight() {
 <template>
   <section ref="sectionRef" class="relative flx-x back-dark">
     <div class="flx-x left pad back-dominant">
-      <h4 class="txt--l mt-2vh">
+      <h4 class="txt--l mt-1vh">
         {{ title }}
       </h4>
       <span class="txt--m txt--left mt-2vh mb-3vh" v-if="!areTextsHidden">
@@ -173,8 +173,8 @@ function scrollRight() {
     <div
       ref="scroller"
       dir="ltr"
-      class="scroll-container x-mandatory-scroll-snapping slow-scroll"
       v-if="isInViewport"
+      class="scroll-container x-mandatory-scroll-snapping slow-scroll"
     >
       <div
         class="relative scroll-image flx-x"
@@ -185,9 +185,10 @@ function scrollRight() {
         <ImageLazy :img="src" ext="png" fit="scale-down" />
       </div>
     </div>
-    <div class="flx-x back-complement">
-      <div class="flx-x row between pad mb-2vh">
-        <button class="" @click="scrollLeft()" aria-label="Scroll left">
+    <div class="image-placeholder" v-else>A</div>
+    <div class="flx-x back-dominant" style="box-shadow: inset 0 -3pt 5pt var(--complement)">
+      <div class="flx-x row between pad">
+        <button class="glow-text" @click="scrollLeft()" aria-label="Scroll left">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="2.5rem">
             <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
           </svg>
@@ -200,7 +201,7 @@ function scrollRight() {
             <small>{{ count }}</small>
           </div>
         </div>
-        <button class="" @click="scrollRight()" aria-label="Scroll right">
+        <button class="glow-text" @click="scrollRight()" aria-label="Scroll right">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="2.5rem">
             <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
           </svg>
@@ -227,7 +228,7 @@ button svg {
 }
 .scroll-container {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   overflow-x: scroll;
   overflow-y: hidden;
   scrollbar-width: none; /* Firefox */
@@ -239,13 +240,18 @@ button svg {
   vertical-align: top;
   scroll-snap-type: x mandatory; /* Add mandatory x snapping */
   /* border-top: 5pt solid var(--dark); */
-  background-color: var(--dark);
+  background-color: var(--dominant);
 }
 .scroll-container::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
 .scroll-container:nth-child(0) {
   border: none;
+}
+.image-placeholder {
+  background-color: var(--dominant);
+  min-width: 100vw;
+  min-height: calc(100vw * 4 / 3);
 }
 .scroll-image {
   display: flex;

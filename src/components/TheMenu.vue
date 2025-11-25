@@ -1,9 +1,11 @@
 <script setup lang="ts">
 // @ Stores
 import { storeToRefs } from 'pinia'
+import { useContentsStore } from '@/stores/contents'
+const { toggleTexts } = useContentsStore()
+const { areTextsHidden } = storeToRefs(useContentsStore())
 import { useNavigationStore } from '@/stores/navigation'
-const { scrollToPosition, toggleTexts } = useNavigationStore()
-const { areTextsHidden } = storeToRefs(useNavigationStore())
+const { scrollToPosition } = useNavigationStore()
 import { useMenuStore } from '@/stores/menu'
 const { hideMenu } = useMenuStore()
 </script>

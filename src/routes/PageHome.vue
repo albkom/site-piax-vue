@@ -4,7 +4,6 @@ import { useContentsStore } from '@/stores/contents'
 const { services } = useContentsStore()
 
 // @ Components
-import BubbleOverlay from '@/components/BubbleOverlay.vue'
 import SectionHero from '@/components/SectionHero.vue'
 import SectionCarousel from '@/components/SectionCarousel.vue'
 </script>
@@ -17,7 +16,6 @@ import SectionCarousel from '@/components/SectionCarousel.vue'
     <div class="flx-x h-100vh">
       <!-- To compensate fixed -->
     </div>
-    <BubbleOverlay class="z-5" />
     <div class="flx-x top back-dark">
       <SectionCarousel
         v-for="service in services"

@@ -3,15 +3,15 @@ import { onMounted, ref } from 'vue'
 import { RouterView } from 'vue-router'
 
 // @ Components
-import TheFooter from './components/TheFooter.vue'
+import TheMenu from '@/components/TheMenu.vue'
+import TheFooter from '@/components/TheFooter.vue'
+import TheBubble from '@/components/TheBubble.vue'
 
 // @ Stores
 import { storeToRefs } from 'pinia'
 import { useNavigationStore } from '@/stores/navigation'
 const { init } = useNavigationStore()
 const { isBusy } = storeToRefs(useNavigationStore())
-
-import TheMenu from './components/TheMenu.vue'
 
 const isReady = ref(false)
 onMounted(() => {
@@ -25,6 +25,7 @@ onMounted(() => {
 
 <template>
   <TheMenu />
+  <TheBubble class="z-5" />
   <RouterView v-if="!isBusy" />
   <TheFooter v-if="!isBusy" />
 </template>

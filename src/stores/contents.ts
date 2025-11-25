@@ -4,6 +4,12 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 export const useContentsStore = defineStore('contents', () => {
+  const areTextsHidden = ref(localStorage.getItem('ggimpianti/textsHidden') === 'true')
+  function toggleTexts() {
+    areTextsHidden.value = !areTextsHidden.value
+    localStorage.setItem('ggimpianti/textsHidden', areTextsHidden.value ? 'true' : 'false')
+  }
+
   const services = [
     {
       id: 'BAG',
@@ -89,5 +95,7 @@ export const useContentsStore = defineStore('contents', () => {
     progress,
     updateProgress,
     services,
+    areTextsHidden,
+    toggleTexts,
   }
 })
