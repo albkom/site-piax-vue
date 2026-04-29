@@ -14,29 +14,27 @@ onMounted(() => {
 
 <template>
   <div class="flx-x max--width h-100vh compensate-header">
-    <div class="absolute top flx-xy z-0" style="filter: contrast(50%) brightness(150%)">
+    <div class="absolute top flx-xy z-0" style="filter: contrast(80%) brightness(90%)">
       <ImageLazy :img="heroSrc" fit="cover" fill alt="Lavori di ristrutturazione GG Impianti e Costruzioni Srl" />
     </div>
-    <div class="flx-x z-1">
-      <!-- <div class="flx-x font-header">
-        <div class="flx-x row txt--xxl">
-          <div>G</div>
-          <div style="transform: scaleX(-1)">G</div>
+    <div class="flx-x z-1" style="align-items: flex-start; justify-content: flex-end; padding: 2rem;">
+      <div class="flx left" style="align-items: flex-start; gap: 0.75rem; max-width: 480px;">
+        <div class="flx-x glow-light glow--l">
+          <img src="@/assets/logo.svg" class="flx-x h-20vh" alt="" />
         </div>
-        <div class="flx-x txt--l">Impianti e Costruzioni</div>
-      </div> -->
-      <div class="flx-x glow-light glow--l">
-        <img src="@/assets/logo.svg" class="flx-x h-20vh" alt="" />
+        <span class="txt--l lh-100 fw-700 glow-light glow--l">
+          I nostri lavori parlano per noi.
+        </span>
+        <div class="flx-x row" style="gap: 0.75rem; margin-top: 0.5rem;">
+          <!-- <a href="https://wa.me/393206345722" target="_blank" class="btn-solid"
+            aria-label="Richiedi un preventivo su WhatsApp">
+            Preventivo gratuito
+          </a> -->
+          <button id="cta" class="btn-ghost" @click="scrollToPosition('section-BAG')">
+            Scopri i servizi ↓
+          </button>
+        </div>
       </div>
-      <span class="txt--l pad lh-100 fw-700 glow-light glow--l">La tua impresa edile di fiducia a Genova</span>
-      <hr class="h-10vh" />
-      <button id="cta" class="flx-x pad--zero"
-        style="background:none;border:none;cursor:pointer;color:inherit;" @click="scrollToPosition('section-BAG')">
-        <span>Scorri per scoprire di più</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-2rem w-2rem" viewBox="0 -960 960 800">
-          <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
-        </svg>
-      </button>
     </div>
   </div>
 </template>
