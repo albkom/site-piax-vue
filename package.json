@@ -20,7 +20,8 @@
     "lint:oxlint": "oxlint . --fix -D correctness --ignore-path .gitignore",
     "lint:eslint": "eslint . --fix",
     "lint": "run-s lint:*",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "convert-images": "node scripts/convertImages.js && node scripts/prepareImages.js"
   },
   "dependencies": {
     "itagoglow": "^1.0.7",
@@ -42,6 +43,7 @@
     "jiti": "^2.4.2",
     "npm-run-all2": "^8.0.4",
     "prettier": "3.6.2",
+    "sharp": "^0.34.5",
     "typescript": "~5.8.0",
     "vite": "^7.0.6",
     "vite-plugin-vue-devtools": "^8.0.0",

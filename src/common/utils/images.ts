@@ -1,9 +1,10 @@
 export function getImageUrl(name: string, ext?: string) {
-  // For images in the public folder, use the base path directly
-  if (name.endsWith(`.${ext}`)) {
+  const resolvedExt = ext ?? 'webp'
+  if (name.endsWith(`.${resolvedExt}`)) {
+    console.log(`Getting image URL for ${name} with extension ${resolvedExt}`)
     return `/img/${name}`
   }
-  return `/img/${name}.${ext ? ext : 'jpg'}`
+  return `/img/${name}.${resolvedExt}`
 }
 
 export function isPortrait(): boolean {
