@@ -28,18 +28,40 @@ onMounted(() => {
       <div class="flx-x glow-light glow--l">
         <img src="@/assets/logo.svg" class="flx-x h-20vh" alt="" />
       </div>
-      <span class="txt--l pad lh-100 fw-700 glow-light glow--l"
-        >La tua impresa edile di fiducia a Genova</span
-      >
+      <span class="txt--l pad lh-100 fw-700 glow-light glow--l">La tua impresa edile di fiducia a Genova</span>
       <hr class="h-10vh" />
-      <div class="flx-x">
-        <span class="mb-1vh">Scorri per <small class="txt--m">scoprire di più</small></span>
-        <button class="icon pad--zero" @click="scrollToPosition('section-BAG')">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-2rem w-2rem" viewBox="0 -960 960 800">
-            <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
-          </svg>
-        </button>
-      </div>
+      <button id="cta" class="flx-x pad--zero"
+        style="background:none;border:none;cursor:pointer;color:inherit;" @click="scrollToPosition('section-BAG')">
+        <span>Scorri per scoprire di più</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-2rem w-2rem" viewBox="0 -960 960 800">
+          <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+        </svg>
+      </button>
     </div>
   </div>
 </template>
+
+<style scoped>
+#cta {
+  color: var(--text) !important;
+  filter: drop-shadow(0 0 1rem var(--highlight));
+  animation: bounce 2s infinite;
+}
+
+#cta span {
+  color: var(--text) !important;
+  font-weight: 700;
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+</style>

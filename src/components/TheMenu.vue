@@ -23,7 +23,7 @@ const { hideMenu } = useMenuStore()
       </button>
     </div>
     <div class="flx left pad">
-      <button class="danger" @click="toggleTexts">
+      <button class="secondary" @click="toggleTexts">
         {{ areTextsHidden ? 'Mostra' : 'Nascondi' }} testi
       </button>
       <!-- <span>Menu</span> -->

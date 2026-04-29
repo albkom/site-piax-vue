@@ -215,7 +215,7 @@ function scrollRight() {
 .scroller-header {
   padding-top: 1rem;
   padding-bottom: 0.5rem;
-  color: var(--action);
+  color: var(--text);
   background-color: var(--dominant);
 }
 button {
@@ -225,6 +225,9 @@ button svg {
   width: 2.5rem;
   height: 2.5rem;
   fill: var(--action);
+}
+section {
+  border-top: 2px solid var(--complement);
 }
 .scroll-container {
   width: 100%;
@@ -269,7 +272,7 @@ button svg {
   width: 100%;
   max-width: 100%;
   /* background-color: var(--light); */
-  background-image: linear-gradient(to right, var(--light), var(--action));
+  background-image: linear-gradient(to right, var(--highlight), var(--action));
   transform-origin: left;
 }
 .overlay {

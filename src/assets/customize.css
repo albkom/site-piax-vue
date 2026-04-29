@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&display=swap');
 
 :root {
-  --font-header: 'Bevan', monospace;
+  --font-header: 'Cairo', monospace;
   --font-main: 'Cairo', monospace;
 
   /* --font-m: 30px; */
@@ -18,7 +18,7 @@
   /* --dominant: hsl(24, 8%, 77%); */
   --complement: #adb5bd;
   --action: #f8f9fa;
-  --highlight: #149cf0;
+  --highlight: #5ec4d1;
   --text: #000000;
   /* --text: #020204; */
   --danger: #c12e2e;

@@ -85,7 +85,7 @@ onMounted(() => {
         <div class="flx left">
           <div class="txt--s">scrivi a</div>
           <div class="txt--s">
-            <a href="ggimpiantiecostruzionisrl@gmail.com">ggimpiantiecostruzionisrl@gmail.com</a>
+            <a href="mailto:ggimpiantiecostruzionisrl@gmail.com">ggimpiantiecostruzionisrl@gmail.com</a>
           </div>
         </div>
       </div>
