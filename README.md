@@ -1,53 +1,63 @@
-# portfolio
+# GG Impianti e Costruzioni Srl — Sito Web
 
-This template should help get you started developing with Vue 3 in Vite.
+Portfolio/showcase site for **GG Impianti e Costruzioni Srl**, a construction and renovation company based in Genova. Built with Vue 3 + TypeScript + Vite, deployed on Firebase Hosting.
 
-## Recommended IDE Setup
+---
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Stack
 
-## Type Support for `.vue` Imports in TS
+- Vue 3 + TypeScript, Vite
+- Vue Router, Pinia
+- [itagoglow](https://www.npmjs.com/package/itagoglow) design system
+- Firebase Hosting
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+---
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+## Setup
 
 ```sh
 pnpm install
 ```
 
-### Compile and Hot-Reload for Development
+---
+
+## Images
+
+Source images (JPG/PNG) go in `public/img/desktop/<CATEGORY>/` and `public/img/mobile/<CATEGORY>/`.  
+Categories: `BAG`, `CUC`, `ILL`, `PAV`, `RIS`, `SAL`.
+
+**1. Convert to WebP:**
+```sh
+pnpm convert-images
+```
+This runs `scripts/convertImages.js` (converts to WebP) then `scripts/prepareImages.js` (generates `src/stores/auto-generated/db.images.ts`).
+
+> Run this whenever images are added or changed.
+
+---
+
+## Development
 
 ```sh
 pnpm dev
 ```
 
-### Type-Check, Compile and Minify for Production
+---
 
+## Build & Deploy
+
+**Preview (Firebase preview channel):**
 ```sh
-pnpm build
+pnpm preview
 ```
 
-### Lint with [ESLint](https://eslint.org/)
-
+**Production deploy:**
 ```sh
-pnpm lint
+pnpm release
 ```
 
-firebase deploy --only hosting:2brutto
+Deploys to Firebase Hosting site `piax-dev`. Target can be changed in `firebase.json` and the `release` script in `package.json`.
 
-"file_handlers": [
-{
-"action": "/index.html/.",
-"accept": {
-"application/json": [".json"]
-}
-}
-],
 
 # fix vue prop type warnings
 https://github.com/orgs/vuejs/discussions/9964
