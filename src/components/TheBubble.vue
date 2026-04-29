@@ -6,7 +6,7 @@ const { toggleMenu } = useMenuStore()
 <template>
   <div style="position: fixed; right: 0; z-index: 20" class="flx bottom pad">
     <div class="flx-x bottom right gap-m" style="align-items: end">
-      <button class="button--icon z-5 glow-text" @click="toggleMenu" aria-label="Apri menu">
+      <button class="button--icon z-5 hero-hamburger" @click="toggleMenu" aria-label="Apri menu">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
           <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
         </svg>
@@ -71,4 +71,29 @@ const { toggleMenu } = useMenuStore()
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.hero-hamburger {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1.5px solid var(--highlight);
+  box-shadow: 0 0 0.75rem rgba(94, 196, 209, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: var(--dominant);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .hero-hamburger {
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+.hero-hamburger:hover {
+  background: rgba(94, 196, 209, 0.15);
+  box-shadow: 0 0 1.25rem rgba(94, 196, 209, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.hero-hamburger svg {
+  fill: var(--dominant);
+}
+</style>

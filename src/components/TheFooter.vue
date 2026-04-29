@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // @ Local
 import { versionLocal, versionItagoglow } from '@/versions'
+import { RouterLink } from 'vue-router'
 import { onMounted } from 'vue'
 
 onMounted(() => {
@@ -74,6 +75,7 @@ onMounted(() => {
           <div class="txt--s">Ragione sociale</div>
           <div class="txt--m">GG Impianti e Costruzioni Srl</div>
           <div class="txt--s">P.IVA: 02917950996</div>
+          <RouterLink to="/privacy" class="txt--s privacy-link">Informativa Privacy</RouterLink>
         </div>
       </div>
       <div class="flx-x row left gap-s">
@@ -85,7 +87,7 @@ onMounted(() => {
         <div class="flx left">
           <div class="txt--s">scrivi a</div>
           <div class="txt--s">
-            <a href="ggimpiantiecostruzionisrl@gmail.com">ggimpiantiecostruzionisrl@gmail.com</a>
+            <a href="mailto:ggimpiantiecostruzionisrl@gmail.com">ggimpiantiecostruzionisrl@gmail.com</a>
           </div>
         </div>
       </div>
@@ -119,5 +121,11 @@ svg {
 }
 .gradient {
   background-image: linear-gradient(to bottom, var(--dominant) 0%, transparent 10%);
+}
+
+.privacy-link {
+  color: var(--highlight);
+  text-decoration: underline;
+  margin-top: 0.25rem;
 }
 </style>

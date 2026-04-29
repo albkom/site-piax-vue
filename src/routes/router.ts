@@ -14,6 +14,11 @@ const routes = [
     name: 'gallery',
     component: () => import('@/routes/PageGallery.vue'),
   },
+  {
+    path: '/privacy',
+    name: 'privacy',
+    component: () => import('@/routes/PagePrivacy.vue'),
+  },
   // {
   //   path: '/about',
   //   name: 'about',
