@@ -38,6 +38,10 @@ const props = defineProps({
     type: String,
     required: false,
   },
+  fill: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const isLoaded = ref(false)
@@ -64,43 +68,57 @@ function handleImageLoad() {
 </script>
 
 <template>
-  <img
-    ref="image"
-    class="image-section-background"
-    draggable="false"
-    @contextmenu.prevent
-    style="pointer-events: none"
-    :class="fit"
-    :src="getImageUrl(img, ext)"
-    loading="lazy"
-    @load="handleImageLoad"
-    :alt="alt ?? deriveAlt(img)"
-  />
+  <div class="image-wrapper" :class="{ 'image-wrapper--fill': fill }">
+    <img
+      ref="image"
+      class="image-section-background"
+      draggable="false"
+      @contextmenu.prevent
+      style="pointer-events: none"
+      :class="[fit, { loaded: isLoaded }]"
+      :src="getImageUrl(img, ext)"
+      loading="lazy"
+      @load="handleImageLoad"
+      :alt="alt ?? deriveAlt(img)"
+    />
+  </div>
 </template>
 
 <style scoped>
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background-color: var(--dominant);
+  overflow: hidden;
+}
+.image-wrapper--fill {
+  position: absolute;
+  inset: 0;
+  width: unset;
+  aspect-ratio: unset;
+}
 .image-section-background {
-  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
   height: 100%;
-  aspect-ratio: 0.75;
   object-fit: cover;
   object-position: center;
 
-  background-color: var(--dominant);
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 }
+.image-section-background.loaded {
+  opacity: 1;
+}
 .contain {
-  width: auto;
-  height: 100vh;
   object-fit: contain;
-  object-position: center;
 }
 .scale-down {
-  width: 100%;
-  height: auto;
-  /* height: 100vh; */
   object-fit: scale-down;
-  object-position: center;
 }
 </style>

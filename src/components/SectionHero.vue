@@ -15,7 +15,7 @@ onMounted(() => {
 <template>
   <div class="flx-x max--width h-100vh compensate-header">
     <div class="absolute top flx-xy z-0" style="filter: contrast(50%) brightness(150%)">
-      <ImageLazy :img="heroSrc" fit="cover" alt="Lavori di ristrutturazione GG Impianti e Costruzioni Srl" />
+      <ImageLazy :img="heroSrc" fit="cover" fill alt="Lavori di ristrutturazione GG Impianti e Costruzioni Srl" />
     </div>
     <div class="flx-x z-1">
       <!-- <div class="flx-x font-header">
