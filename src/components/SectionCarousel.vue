@@ -231,10 +231,16 @@ button {
 button svg {
   width: 2.5rem;
   height: 2.5rem;
-  fill: var(--action);
+  fill: var(--highlight);
+  filter: drop-shadow(0 0 4px rgba(94, 196, 209, 0.45));
+  transition: filter 0.2s ease;
+}
+button:hover svg {
+  filter: drop-shadow(0 0 8px rgba(94, 196, 209, 0.8));
 }
 section {
-  border-top: 2px solid var(--complement);
+  border-top: 2px solid rgba(94, 196, 209, 0.35);
+  box-shadow: 0 -1px 8px rgba(94, 196, 209, 0.08);
 }
 .scroll-container {
   width: 100%;
@@ -298,14 +304,15 @@ section {
 
 /* --- Miglioramenti estetici --- */
 .section-header {
-  border-bottom: 2px solid var(--complement);
+  border-bottom: 1px solid rgba(94, 196, 209, 0.25);
 }
 .section-eyebrow {
   font-size: 0.65rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--complement);
+  color: var(--highlight);
   margin-bottom: 0.25rem;
+  text-shadow: 0 0 6px rgba(94, 196, 209, 0.45);
 }
 .section-title-text {
   margin-top: 0;
@@ -315,7 +322,8 @@ section {
 .section-accent {
   width: 2rem;
   height: 2px;
-  background-color: var(--text);
+  background-color: var(--highlight);
+  box-shadow: 0 0 6px rgba(94, 196, 209, 0.6);
   margin: 0.4rem 0 0.6rem;
 }
 .section-desc {
@@ -336,9 +344,10 @@ section {
 }
 .nav-label {
   font-size: 0.6rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--complement);
+  color: var(--highlight);
+  text-shadow: 0 0 5px rgba(94, 196, 209, 0.4);
 }
 .nav-counter {
   font-size: 1rem;
@@ -362,7 +371,8 @@ section {
   transition: all 0.2s ease;
 }
 .nav-dot.active {
-  background-color: var(--text);
+  background-color: var(--highlight);
+  box-shadow: 0 0 5px rgba(94, 196, 209, 0.7);
   width: 12px;
   border-radius: 2px;
 }
