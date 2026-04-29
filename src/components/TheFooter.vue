@@ -74,6 +74,7 @@ onMounted(() => {
           <div class="txt--s">Ragione sociale</div>
           <div class="txt--m">GG Impianti e Costruzioni Srl</div>
           <div class="txt--s">P.IVA: 02917950996</div>
+          <a href="/privacy" class="txt--s privacy-link">Informativa Privacy</a>
         </div>
       </div>
       <div class="flx-x row left gap-s">
@@ -119,5 +120,11 @@ svg {
 }
 .gradient {
   background-image: linear-gradient(to bottom, var(--dominant) 0%, transparent 10%);
+}
+
+.privacy-link {
+  color: var(--highlight);
+  text-decoration: underline;
+  margin-top: 0.25rem;
 }
 </style>
