@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bevan:ital@0;1&display=swap');
 
 :root {
-  --font-header: 'Bevan', monospace;
+  --font-header: 'Cairo', monospace;
   --font-main: 'Cairo', monospace;
 
   /* --font-m: 30px; */
@@ -18,7 +18,7 @@
   /* --dominant: hsl(24, 8%, 77%); */
   --complement: #adb5bd;
   --action: #f8f9fa;
-  --highlight: #149cf0;
+  --highlight: #5ec4d1;
   --text: #000000;
   /* --text: #020204; */
   --danger: #c12e2e;
@@ -152,4 +152,113 @@ main {
 [data-itagoflow][data-in='slideFromRight'] {
   opacity: 0;
   transform: translateX(1rem);
+}
+
+/* --- FOOTER mailto fix --- */
+/* (nessun CSS, fix nel template TheFooter) */
+
+/* --- HERO gradient overlay --- */
+.hero-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%);
+}
+
+/* --- BUTTON SYSTEM --- */
+
+/* Circular icon button — fallback */
+button.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  background: rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: opacity 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+button.btn-icon svg {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  fill: currentColor;
+  stroke: none;
+}
+button.btn-icon:hover { opacity: 0.8; }
+button.btn-icon.danger {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+button.btn-icon.danger svg { fill: var(--danger); }
+
+/* Solid filled button — fallback */
+button.btn-solid,
+a.btn-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(233, 236, 239, 0.85);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s, background 0.2s;
+}
+button.btn-solid:hover,
+a.btn-solid:hover { opacity: 0.85; }
+
+/* Ghost outline button — fallback */
+button.btn-ghost,
+a.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.4rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--dominant);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+button.btn-ghost:hover,
+a.btn-ghost:hover {
+  border-color: var(--dominant);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Glass enhancement — only when backdrop-filter is supported */
+@supports (backdrop-filter: blur(1px)) {
+  button.btn-icon {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  button.btn-solid,
+  a.btn-solid {
+    background: rgba(233, 236, 239, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  button.btn-ghost,
+  a.btn-ghost {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
 }

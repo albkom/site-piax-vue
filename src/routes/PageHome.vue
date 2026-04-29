@@ -16,7 +16,7 @@ import SectionCarousel from '@/components/SectionCarousel.vue'
     <div class="flx-x h-100vh">
       <!-- To compensate fixed -->
     </div>
-    <div class="flx-x top back-dark">
+    <div class="flx-x top back-dark services-grid">
       <SectionCarousel
         v-for="service in services"
         :key="service.id"
@@ -30,4 +30,11 @@ import SectionCarousel from '@/components/SectionCarousel.vue'
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+@media (min-width: 769px) {
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+</style>

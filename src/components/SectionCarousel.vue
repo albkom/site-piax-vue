@@ -162,11 +162,11 @@ function scrollRight() {
 </script>
 <template>
   <section ref="sectionRef" class="relative flx-x back-dark">
-    <div class="flx-x left pad back-dominant">
-      <h4 class="txt--l mt-1vh">
-        {{ title }}
-      </h4>
-      <span class="txt--m txt--left mt-2vh mb-3vh" v-if="!areTextsHidden">
+    <div class="flx-x left pad back-dominant section-header">
+      <span class="section-eyebrow">Servizio</span>
+      <h4 class="txt--l section-title-text">{{ title }}</h4>
+      <div class="section-accent"></div>
+      <span class="txt--m txt--left section-desc" v-if="!areTextsHidden">
         {{ description }}
       </span>
     </div>
@@ -186,19 +186,26 @@ function scrollRight() {
       </div>
     </div>
     <div class="image-placeholder" v-else>A</div>
+    <div class="scroll-progress-bar">
+      <div class="scroll-progress-fill" :style="{ width: ((index + 1) / count * 100) + '%' }"></div>
+    </div>
     <div class="flx-x back-dominant" style="box-shadow: inset 0 -3pt 5pt var(--complement)">
-      <div class="flx-x row between pad">
+      <div class="flx-x row between pad" style="width: 100%; overflow: hidden;">
         <button class="glow-text" @click="scrollLeft()" aria-label="Scroll left">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="2.5rem">
             <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
           </svg>
         </button>
-        <div class="flx pad">
-          <span style="text-wrap: wrap">{{ title }}</span>
-          <div class="flx-x row">
-            <small>{{ index + 1 }}</small>
-            <span>/</span>
-            <small>{{ count }}</small>
+        <div class="flx pad nav-center" style="flex: 1; min-width: 0; overflow: hidden;">
+          <span class="nav-label">{{ title }}</span>
+          <div class="nav-counter">{{ index + 1 }} / {{ count }}</div>
+          <div class="nav-dots">
+            <span
+              v-for="i in count"
+              :key="i"
+              class="nav-dot"
+              :class="{ active: i === index + 1 }"
+            ></span>
           </div>
         </div>
         <button class="glow-text" @click="scrollRight()" aria-label="Scroll right">
@@ -215,7 +222,7 @@ function scrollRight() {
 .scroller-header {
   padding-top: 1rem;
   padding-bottom: 0.5rem;
-  color: var(--action);
+  color: var(--text);
   background-color: var(--dominant);
 }
 button {
@@ -224,7 +231,16 @@ button {
 button svg {
   width: 2.5rem;
   height: 2.5rem;
-  fill: var(--action);
+  fill: var(--highlight);
+  filter: drop-shadow(0 0 4px rgba(94, 196, 209, 0.45));
+  transition: filter 0.2s ease;
+}
+button:hover svg {
+  filter: drop-shadow(0 0 8px rgba(94, 196, 209, 0.8));
+}
+section {
+  border-top: 2px solid rgba(94, 196, 209, 0.35);
+  box-shadow: 0 -1px 8px rgba(94, 196, 209, 0.08);
 }
 .scroll-container {
   width: 100%;
@@ -269,7 +285,7 @@ button svg {
   width: 100%;
   max-width: 100%;
   /* background-color: var(--light); */
-  background-image: linear-gradient(to right, var(--light), var(--action));
+  background-image: linear-gradient(to right, var(--highlight), var(--action));
   transform-origin: left;
 }
 .overlay {
@@ -284,5 +300,90 @@ button svg {
   /* background-image: linear-gradient(to bottom, var(--dark) 0%, transparent 50%); */
   background-color: var(--dominant);
   border-bottom: solid 5pt var(--dominant);
+}
+
+/* --- Miglioramenti estetici --- */
+.section-header {
+  border-bottom: 1px solid rgba(94, 196, 209, 0.25);
+}
+.section-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--highlight);
+  margin-bottom: 0.25rem;
+  text-shadow: 0 0 6px rgba(94, 196, 209, 0.45);
+}
+.section-title-text {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.1;
+}
+.section-accent {
+  width: 2rem;
+  height: 2px;
+  background-color: var(--highlight);
+  box-shadow: 0 0 6px rgba(94, 196, 209, 0.6);
+  margin: 0.4rem 0 0.6rem;
+}
+.section-desc {
+  margin-bottom: 0.75rem;
+}
+.scroll-progress-bar {
+  width: 100%;
+  height: 3px;
+  background-color: var(--complement);
+}
+.scroll-progress-fill {
+  height: 100%;
+  background-color: var(--highlight);
+  transition: width 0.3s ease;
+}
+.nav-center {
+  text-align: center;
+}
+.nav-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--highlight);
+  text-shadow: 0 0 5px rgba(94, 196, 209, 0.4);
+}
+.nav-counter {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+}
+.nav-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  margin-top: 3px;
+  overflow: hidden;
+}
+.nav-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--complement);
+  transition: all 0.2s ease;
+}
+.nav-dot.active {
+  background-color: var(--highlight);
+  box-shadow: 0 0 5px rgba(94, 196, 209, 0.7);
+  width: 12px;
+  border-radius: 2px;
+}
+.scroller-header {
+  color: var(--text);
+}
+
+/* --- Desktop: 2 colonne --- */
+@media (min-width: 769px) {
+  .image-placeholder {
+    min-height: calc(50vw * 4 / 3);
+  }
 }
 </style>
