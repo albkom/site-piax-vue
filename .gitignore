@@ -38,10 +38,11 @@ coverage
 
 # Firebase
 .firebase/
-.firebaserc
-firebase.json
 
 .vscode/
+.agents/
+.claude/
+skills-lock.json
 
 pnpm-lock.yaml
 package-lock.json

@@ -61,7 +61,7 @@ onMounted(() => {
 
 function handleImageLoad() {
   isLoaded.value = true
-  console.log('ImageLazy loaded:', props.img)
+  // console.log('ImageLazy loaded:', props.img)
   if (image.value)
     image.value.style.opacity = '1'
 }

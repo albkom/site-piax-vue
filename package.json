@@ -1,6 +1,6 @@
 {
   "name": "piax",
-  "version": "2.3.0",
+  "version": "2.7.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -8,13 +8,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "convert-markdown": "node ./CONTENTS/convertMarkdownToRecipe",
-    "serve": "SET PORT=5173 && serve ./dist",
     "prebuild": "node scripts/prebuild.js",
     "build": "npm run prebuild && run-p type-check \"build-only {@}\" --",
-    "release": "node ./update-version.js && npm run build",
-    "deploy": "firebase deploy --only hosting:gpedilimpianti",
-    "preview": "vite preview",
+    "release": "npm run build && firebase deploy --only hosting:piax-dev",
+    "preview": "npm run build && firebase hosting:channel:deploy preview --only piax-dev",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
     "lint:oxlint": "oxlint . --fix -D correctness --ignore-path .gitignore",
