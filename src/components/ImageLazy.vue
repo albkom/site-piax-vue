@@ -2,6 +2,25 @@
 import { getImageUrl } from '@/common/utils/images'
 import { onMounted, ref } from 'vue'
 
+const PREFIX_MAP: Record<string, string> = {
+  BAG: 'Bagno',
+  CUC: 'Cucina',
+  ILL: 'Illuminazione',
+  PAV: 'Pavimento',
+  RIS: 'Ristrutturazione',
+  SAL: 'Salotto',
+}
+
+function deriveAlt(img: string): string {
+  const filename = img.split('/').pop() ?? img
+  const nameWithoutExt = filename.replace(/\.[^.]+$/, '')
+  const match = nameWithoutExt.match(/^([A-Z]+)_(\d+)$/)
+  if (!match) return nameWithoutExt
+  const [, prefix, num] = match
+  const label = PREFIX_MAP[prefix] ?? prefix
+  return `${label} ${num}`
+}
+
 const props = defineProps({
   img: {
     type: String,
@@ -14,6 +33,10 @@ const props = defineProps({
   fit: {
     type: String,
     default: 'cover',
+  },
+  alt: {
+    type: String,
+    required: false,
   },
 })
 
@@ -51,7 +74,7 @@ function handleImageLoad() {
     :src="getImageUrl(img, ext)"
     loading="lazy"
     @load="handleImageLoad"
-    alt="Image"
+    :alt="alt ?? deriveAlt(img)"
   />
 </template>
 

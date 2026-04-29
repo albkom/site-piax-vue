@@ -19,5 +19,4 @@ Allow: /
 User-agent: Slurp
 Allow: /
 
-# Add your sitemap URL here when you have one
-# Sitemap: https://yourwebsite.com/sitemap.xml
+Sitemap: https://www.ggimpiantiecostruzionisrl.it/sitemap.xml
