@@ -182,7 +182,7 @@ function scrollRight() {
         :key="`img-${imgIndex}`"
         :id="`imgs-${imgIndex}`"
       >
-        <ImageLazy :img="src" ext="png" fit="scale-down" />
+        <ImageLazy :img="src" fit="scale-down" />
       </div>
     </div>
     <div class="image-placeholder" v-else>A</div>

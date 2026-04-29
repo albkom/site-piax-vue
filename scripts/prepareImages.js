@@ -11,8 +11,7 @@ function getAllFiles(dirPath, arrayOfFiles = []) {
     const fullPath = path.join(dirPath, file)
     if (fs.statSync(fullPath).isDirectory()) {
       getAllFiles(fullPath, arrayOfFiles)
-    } else {
-      // Store relative path from imagesDir
+    } else if (fullPath.toLowerCase().endsWith('.webp')) {
       arrayOfFiles.push(path.relative(dir, fullPath).replace(/\\/g, '/'))
     }
   })
@@ -42,4 +41,4 @@ export const images: Record<string, ImageGroup> = ${JSON.stringify(grouped, null
 `
 
 fs.writeFileSync(outputFile, content, 'utf8')
-console.log(`Exported ${files.length} images to images.ts`)
+console.log(`Exported ${files.length} images to db.images.ts`)
