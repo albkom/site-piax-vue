@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // @ Local
 import { versionLocal, versionItagoglow } from '@/versions'
+import { RouterLink } from 'vue-router'
 import { onMounted } from 'vue'
 
 onMounted(() => {
@@ -74,7 +75,7 @@ onMounted(() => {
           <div class="txt--s">Ragione sociale</div>
           <div class="txt--m">GG Impianti e Costruzioni Srl</div>
           <div class="txt--s">P.IVA: 02917950996</div>
-          <a href="/privacy" class="txt--s privacy-link">Informativa Privacy</a>
+          <RouterLink to="/privacy" class="txt--s privacy-link">Informativa Privacy</RouterLink>
         </div>
       </div>
       <div class="flx-x row left gap-s">
